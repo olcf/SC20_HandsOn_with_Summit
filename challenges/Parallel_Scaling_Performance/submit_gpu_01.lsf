@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#BSUB -P TRN001
+#BSUB -W 10
+#BSUB -nnodes 1
+#BSUB -J 01_gpu
+#BSUB -o 01_gpu.%J
+#BSUB -e 01_gpu.%J
+#BSUB -U StudentsSC19
+
+export OMP_NUM_THREADS=1
+
+jsrun --smpiargs="none" -n1 -c1 -a1 -g1 -bpacked:1 ./run
