@@ -1,10 +1,8 @@
-# Welcome to the SC19 Hands-On with Summit session!
-
-This repository contains the materials for the *[Hands-On with the Summit Supercomputer](https://sc19.supercomputing.org/presentation/?id=pec111&sess=sess412)* at SC19.
+# Welcome to the SC20 Hands-On with Summit session!
 
 
 ### What is Summit?
-Summit, located at [Oak Ridge National Laboratory](https://www.ornl.gov/) in Oak Ridge, TN,  is the [world's most powerful supercomputer](https://www.top500.org/system/179397) dedicated to open scientific research. It has lots of unique architectural features that we'll explore today, including:
+Summit, located at [Oak Ridge National Laboratory](https://www.ornl.gov/) in Oak Ridge, TN,  is one of the [world's most powerful supercomputers](https://www.top500.org/system/179397) dedicated to open scientific research. It has lots of unique architectural features that we'll explore today, including:
 
 - IBM POWER9™ CPUs (x 9,216)
 - NVIDIA Volta V100 GPUs (x 27,648)
@@ -27,8 +25,6 @@ README.md file and any additional files for that challenge. Challenges range in
 difficulty from introductory to very complex, and may require research and
 reference materials outside of what's provided in this repository.
 
-##### *P.S. Be on the lookout for giveaways hidden throughout!* 
-
 
 ### Helpful Links
 
@@ -40,6 +36,6 @@ reference materials outside of what's provided in this repository.
 <hr>
 <br>
 <p align="center">
-  <a href="https://sc19.supercomputing.org/"><img src="./images/SC19-color-hor.png" width="200" alt="SC19"></a><br><br>
+  <a href="https://sc19.supercomputing.org/"><img src="./images/sc20_color_black_hor.png" width="200" alt="SC20"></a><br><br>
   <a href="https://www.olcf.ornl.gov/"><img src="./images/olcf_logo.png" width="400" alt="Oak Ridge Leadership Computing Facility"></a>
 </p>
