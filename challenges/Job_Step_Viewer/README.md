@@ -2,9 +2,9 @@
 
 When running programs on a workstation, most of the time you can simply execute `./a.out` and wait for the results. On most HPC clusters, you must use a "batch scheduler" to request one or more compute nodes to run on and a "job launcher" to execute your program on the compute node(s) you were allocated. You submit jobs on Summit with IBM's [`jsrun` job launcher](../jsrun_Job_Launcher).
 
-The [Job Step Viewer](https://jobstepviewer.olcf.ornl.gov/) provides a graphical view of an application's runtime layout on Summit. It allows users to preview and quickly iterate with multiple jsrun options to understand and optimize job launch. It is a convenient tool to allow you to visualize and verify you are configuring your `jsrun` options in the way you expect.
+The [Job Step Viewer](https://jobstepviewer.olcf.ornl.gov/) provides a graphical view of an application's runtime layout on Summit. It allows users to preview and quickly iterate with multiple jsrun options to understand and optimize job launch. It is a convenient tool that allows you to visualize and verify you are configuring your `jsrun` options in the way you expect.
 
-We recommend using this Challenge in conjunction with the [`jsrun` Job Launcher](../jsrun_Job_Launcher) challenge. It is recommended you go through at least the first example or two to get an understanding of how the `jsrun` command works, then re-run through the examples, integrating the Job Step Viewer into your submission scripts in the `jsrun` Challenge. Then you can continue to use the Viewer as you go through the remaining examples and visualize your submissions as you go.
+We recommend attempting this Challenge in conjunction with the [`jsrun` Job Launcher](../jsrun_Job_Launcher) challenge. You should go through at least the first example or two to get an understanding of how the `jsrun` command works, then re-run through the examples, integrating the Job Step Viewer into your submission script. Then you can continue to use the Viewer as you go through the remaining examples and visualize your submissions as you go.
 
 ## Job Step Viewer Usage
 
@@ -14,7 +14,7 @@ First, request an allocation of nodes on Summit:
 $ bsub -P TRN001 -W 10 -nnodes 1 -J testing_job_step_viewer -U StudentsSC19 -Is $SHELL
 ```
 
-Once your node is allocated, load the job-step-viewer module:
+Once your node is allocated, load the `job-step-viewer` module:
 
 ```c
 $ module load job-step-viewer
