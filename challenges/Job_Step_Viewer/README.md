@@ -35,7 +35,7 @@ A URL will be printed after a few seconds. Copy this URL to your browser and loa
 </center>
 <br>
 
-### Summit Tour
+## Summit Tour
 
 This initial view shows a top-down view of the physical Summit layout in the machine room and your allocated node(s) highlighted in green and/or red. Each cabinet of the machine is laid out and labeled on a Row [a-h], Cabinet [01-36,50] coordinate system. Each node has a hostname that contains this cooridinate plus the node number (there are 18 nodes per cabinet). 
 
@@ -43,7 +43,7 @@ Rather than imagine what this looks like in real life, OLCF has created a [3D vi
 
 For example, if you are allocated the node `h24n09`, the hostname indicates your node is in Row H, Cabinet 24 and is the 9th node from the bottom. This cabinet is physically 24 cabinets down from the [start of row G](https://my.matterport.com/show/?m=iBfbj7ET4LT&sr=-.4,-1.13&ss=110). That link should take you directly to the start of Row G and H. Row G starts at Cabinet 1 and Row H starts at 9, and so number 24 is 16 cabinets down from the start (as you can see, the entryway phsyically precludes row H from starting all the way to the left). Navigate down the aisle between G and H and find [cabinet 24](https://my.matterport.com/show/?m=iBfbj7ET4LT&sr=3.07,.2&ss=183). You can't see the nodes with the cabinet door closed here, but you can find a [representative cabinet](https://my.matterport.com/show/?m=iBfbj7ET4LT&sr=-.31,.18&ss=82) with the back door open and the [insides of a node](https://my.matterport.com/show/?m=iBfbj7ET4LT&sr=-2.53,.12&ss=11).
 
-The sideways 'H' shaped gap in the middle of the Job Step Viewer layout are cabinets containing system infrastructure such as [interconnect gear](https://my.matterport.com/show/?m=iBfbj7ET4LT&sr=-.51,.9&ss=86), rather than compute nodes. Spend a few moments exploring the rest of the OLCF facility, finding and learning about other points of interest such as the File System, Operations Control Room, and Energy Plant.
+The sideways 'H' shaped gap in the middle of the Job Step Viewer layout are cabinets containing system infrastructure such as [interconnect gear](https://my.matterport.com/show/?m=iBfbj7ET4LT&sr=-.51,.9&ss=86), rather than compute nodes. Spend a few moments exploring the rest of the OLCF facility, finding and learning about other points of interest such as the File System, Operations Control Room, and Energy Plant, or to find the node you were allocated in the above example.
 
 ### Node Layout
 
