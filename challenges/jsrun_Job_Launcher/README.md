@@ -76,6 +76,12 @@ Then copy the `submit.lsf` file into the `Hello_jsrun/` directory:
 $ cp ../submit.lsf .
 ```
 
+## Job Step Viewer
+
+The [Job Step Viewer](https://jobstepviewer.olcf.ornl.gov/) provides a graphical view of an application's runtime layout on Summit. It allows users to preview and quickly iterate with multiple jsrun options to understand and optimize job launch. It is a convenient tool that allows you to visualize and verify you are configuring your `jsrun` options in the way you expect.
+
+We recommend attempting Job Step Viewer Challenge in conjunction with this challenge. You should go through the first example or two following this section to get an understanding of how the `jsrun` command works, then re-run the examples, integrating the Job Step Viewer into your submission script. Then you can continue to use the Viewer as you go through the remaining examples and visualize your submissions as you go.
+
 ## Example 1
 
 As a first example, let's try to create the layout shown in the image below. Here, we are essentially splitting up the resources on our node among 6 resource sets, where each resource set is shown as a different color and contains 7 physical CPU cores and 1 GPU. Recall that in the M[T] numbering scheme, M represents the MPI rank ID and T represents the OpenMP thread ID. So, for example, 2[0] represents MPI rank 2 - OpenMP thread 0. Based on the image, this means that each resource set contains 1 MPI rank and 1 OpenMP thread. 
