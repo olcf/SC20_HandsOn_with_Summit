@@ -20,14 +20,18 @@ Once your node is allocated, load the `job-step-viewer` module:
 $ module load job-step-viewer
 ```
 
-Run a `jsrun` command by itself, or with an executable, such as the `Hello_jsrun` from the [`jsrun` Challenge](../jsrun_Job_Launcher):
+Run a `jsrun` command by itself, or with an executable, such as the `Hello_jsrun` from the [`jsrun` Challenge](../jsrun_Job_Launcher). A URL will be printed out after a few seconds:
 
 ```c
 $ export OMP_NUM_THREADS=2
 $ jsrun -n6 -c7 -g1 -a1
+
+
+https://jobstepviewer.olcf.ornl.gov/summit/315253-1
+
 ```
 
-A URL will be printed after a few seconds. Copy this URL to your browser and load it.
+Copy this URL to your browser and load it.
 
 <br>
 <center>
