@@ -1,6 +1,6 @@
 # `jsrun` Job Launcher
 
-When running programs on a workstation, most of the time you can simply execute `./a.out` and wait for the results. On most HPC cluster, you must use a "batch scheduler" to request one or more compute nodes to run on and a "job launcher" to execute your program on the compute node(s) you were allocated. In this challenge, you will learn the basics of how to launch jobs on Summit with IBM's `jsrun` job launcher.
+When running programs on a workstation, most of the time you can simply execute `./a.out` and wait for the results. On most HPC clusters, you must use a "batch scheduler" to request one or more compute nodes to run on and a "job launcher" to execute your program on the compute node(s) you were allocated. In this challenge, you will learn the basics of how to launch jobs on Summit with IBM's `jsrun` job launcher.
 
 ## Summit Nodes
 
@@ -75,6 +75,12 @@ Then copy the `submit.lsf` file into the `Hello_jsrun/` directory:
 ```c
 $ cp ../submit.lsf .
 ```
+
+## Job Step Viewer
+
+The [Job Step Viewer](https://jobstepviewer.olcf.ornl.gov/) provides a graphical view of an application's runtime layout on Summit. It allows users to preview and quickly iterate with multiple jsrun options to understand and optimize job launch. It is a convenient tool that allows you to visualize and verify you are configuring your `jsrun` options in the way you expect.
+
+We recommend attempting Job Step Viewer Challenge in conjunction with this challenge. You should go through the first example or two following this section to get an understanding of how the `jsrun` command works, then re-run the examples, integrating the Job Step Viewer into your submission script. Then you can continue to use the Viewer as you go through the remaining examples and visualize your submissions as you go.
 
 ## Example 1
 
