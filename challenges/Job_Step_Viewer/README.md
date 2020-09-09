@@ -1,4 +1,4 @@
-# Job Step Viewer and Summit Tour
+# Job Step Viewer and Machine Room Tour
 
 When running programs on a workstation, most of the time you can simply execute `./a.out` and wait for the results. On most HPC clusters, you must use a "batch scheduler" to request one or more compute nodes to run on and a "job launcher" to execute your program on the compute node(s) you were allocated. You submit jobs on Summit with IBM's [`jsrun` job launcher](../jsrun_Job_Launcher).
 
@@ -11,7 +11,7 @@ We recommend attempting this Challenge in conjunction with the [`jsrun` Job Laun
 First, request an allocation of nodes on Summit:
 
 ```c
-$ bsub -P TRN001 -W 10 -nnodes 1 -J testing_job_step_viewer -U StudentsSC19 -Is $SHELL
+$ bsub -P GEN146 -W 10 -nnodes 1 -J testing_job_step_viewer -Is $SHELL
 ```
 
 Once your node is allocated, load the `job-step-viewer` module:
@@ -27,11 +27,23 @@ $ export OMP_NUM_THREADS=2
 $ jsrun -n6 -c7 -g1 -a1
 
 
-https://jobstepviewer.olcf.ornl.gov/summit/315253-1
+https://jobstepviewer.olcf.ornl.gov/ascent/315253-1
 
 ```
 
-Copy this URL to your browser and load it.
+You will see a unique URL printed after `jsrun` executes (the above is an example only). Copy the URL from your terminal to your browser and load it.
+
+<br>
+<center>
+<img src="images/jsviewer_4.png" style="width:80%">
+</center>
+<br>
+
+Your allocated node(s) highlighted in green and/or red.
+
+## Ascent & Summit Tour
+
+Ascent is comprised of the same compute hardware as Summit, however, it is only a single cabinet with 18 nodes. It is physically co-located with Summit, but it has a separate network fabric and attached filesystem. Summit is comprised of many more cabinets laid out in a row/column fashion. This is output from a Job Step Viewer invocation on Summit showing the top-down overview of the machine room:
 
 <br>
 <center>
@@ -39,15 +51,15 @@ Copy this URL to your browser and load it.
 </center>
 <br>
 
-## Summit Tour
+While the Ascent nodes do not appear on this diagram, the Ascent nodes are physically located in the lower right of this diagram.
 
-This initial view shows a top-down view of the physical Summit layout in the machine room and your allocated node(s) highlighted in green and/or red. Each cabinet of the machine is laid out and labeled on a Row [a-h], Cabinet [01-36,50] coordinate system. Each node has a hostname that contains this coordinate plus the node number (there are 18 nodes per cabinet). 
+Each cabinet of the machine of Summit is laid out and labeled on a Row [a-h], Cabinet [01-50] coordinate system. Each node has a hostname that contains this coordinate plus the node number (there are 18 nodes per cabinet). While Ascent is not a part of Summit, it is located in the same namespace. The hostname coordinate system is machine room-centric, rather than computer-centric, but it just so happens Summit occupies the vast majority of the room.
 
 Rather than trying to imagine what this looks like in real life, OLCF has created a [3D virtual tour](https://my.matterport.com/show/?m=iBfbj7ET4LT) of the Summit machine room, for you to see for yourself.
 
-For example, if you are allocated the node `h24n09`, the hostname indicates your node is in Row H, Cabinet 24 and is the 9th node from the bottom. This cabinet is physically 24 cabinets down from the ['left' side of Summit](https://my.matterport.com/show/?m=iBfbj7ET4LT&sr=-.4,-1.13&ss=110) (if we orientate ourselves according to the top-down view). Row H starts in column 9, and so `h24` is 16 cabinets down from the start of Row H (as you can see, the entryway physically precludes row H from starting all the way to the left). Navigate down the aisle between G and H and find [cabinet 24](https://my.matterport.com/show/?m=iBfbj7ET4LT&sr=3.07,.2&ss=183). You can't see the nodes with the cabinet door closed here, but you can find a [representative cabinet](https://my.matterport.com/show/?m=iBfbj7ET4LT&sr=-.31,.18&ss=82) with the back door open and the [insides of a node](https://my.matterport.com/show/?m=iBfbj7ET4LT&sr=-2.53,.12&ss=11).
+For example, if you are allocated the node `h49n09`, the hostname indicates your node is in Row H, Cabinet 49 and is the 9th node from the bottom. This cabinet is physically 49 cabinets down from the ['left' side of Summit](https://my.matterport.com/show/?m=iBfbj7ET4LT&sr=-.4,-1.13&ss=110) (if we orientate ourselves according to the top-down view). Row H starts in column 9, and so `h49` is 41 cabinets down from the start of Row H (as you can see, the entryway physically precludes row H from starting all the way to the left). Navigate down the aisle between G and H and find [cabinet 49](https://my.matterport.com/show/?m=iBfbj7ET4LT). You can't see the nodes with the cabinet door closed here, but you can find a [representative cabinet](https://my.matterport.com/show/?m=iBfbj7ET4LT&sr=-.31,.18&ss=82) with the back door open and the [insides of a node](https://my.matterport.com/show/?m=iBfbj7ET4LT&sr=-2.53,.12&ss=11).
 
-The sideways 'H' shaped gap in the middle of the layout are cabinets containing system infrastructure such as [interconnect gear](https://my.matterport.com/show/?m=iBfbj7ET4LT&sr=-.51,.9&ss=86), rather than compute nodes. Spend a few moments exploring the rest of the OLCF facility, finding and learning about other points of interest such as the File System, Operations Control Room, and Energy Plant, or to find the node you were allocated in the above example.
+The sideways 'H' shaped gap in the middle of the layout are cabinets containing system infrastructure such as [interconnect gear](https://my.matterport.com/show/?m=iBfbj7ET4LT&sr=-.51,.9&ss=86), rather than compute nodes. Spend a few moments exploring the rest of the OLCF facility, finding and learning about other points of interest such as the File System, Operations Control Room, and Energy Plant.
 
 ### Node Layout
 
