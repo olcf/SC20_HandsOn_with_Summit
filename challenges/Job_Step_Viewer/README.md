@@ -27,11 +27,11 @@ $ export OMP_NUM_THREADS=2
 $ jsrun -n6 -c7 -g1 -a1
 
 
-https://jobstepviewer.olcf.ornl.gov/ascent/315253-1
+https://jobstepviewer.olcf.ornl.gov/ascent/37210-1
 
 ```
 
-You will see a unique URL printed after `jsrun` executes (the above is an example only). Copy the URL from your terminal to your browser and load it.
+You will see a unique URL printed after `jsrun` executes (the above is an example only, you will note your job ID in your URL). Copy the URL from your terminal to your browser and load it.
 
 <br>
 <center>
