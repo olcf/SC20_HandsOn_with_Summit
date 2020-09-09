@@ -39,7 +39,7 @@ You will see a unique URL printed after `jsrun` executes (the above is an exampl
 </center>
 <br>
 
-Your allocated node(s) highlighted in green and/or red.
+Your allocated node(s) will be highlighted in green and/or red (we will explain the colors shortly).
 
 ## Ascent & Summit Tour
 
@@ -53,7 +53,7 @@ Ascent is comprised of the same compute hardware as Summit, however, it is only 
 
 While the Ascent nodes do not appear on this diagram, the Ascent nodes are physically located in the lower right of this diagram.
 
-Each cabinet of the machine of Summit is laid out and labeled on a Row [a-h], Cabinet [01-50] coordinate system. Each node has a hostname that contains this coordinate plus the node number (there are 18 nodes per cabinet). While Ascent is not a part of Summit, it is located in the same namespace. The hostname coordinate system is machine room-centric, rather than computer-centric, but it just so happens Summit occupies the vast majority of the room.
+Each cabinet of the machine of Summit is laid out and labeled on a Row [a-h], Cabinet [01-50] coordinate system. Each node has a hostname that contains this coordinate plus the node number (there are 18 nodes per cabinet). While Ascent is not a part of Summit, it is located physically located and indexed in the same namespace. The hostname coordinate system is machine room-centric, rather than computer-centric, but it just so happens Summit occupies the vast majority of the room.
 
 Rather than trying to imagine what this looks like in real life, OLCF has created a [3D virtual tour](https://my.matterport.com/show/?m=iBfbj7ET4LT) of the Summit machine room, for you to see for yourself.
 
@@ -63,13 +63,13 @@ The sideways 'H' shaped gap in the middle of the layout are cabinets containing 
 
 ### Node Layout
 
-Nodes in your allocation will be highlighted in either green or red. Green nodes indicate the node is being used by the `jsrun` launch. Nodes highlighted in red are allocated to your job, but not being used by this invocation of `jsrun`. For example, if you _allocate_ two nodes with `bsub` but only _launch_ your job on one core or GPU with `jsrun`, one of the allocated nodes will be sitting idle and will show as red on the top-down view. This is a valuable tool to use while you are setting up jobs on Summit and Ascent to verify you are launching them as you intend.
+Nodes in your allocation will be highlighted in either green or red. Green nodes indicate the node is being used by the `jsrun` launch. Nodes highlighted in red are allocated to your job, but not being used by this invocation of `jsrun`. For example, if you _allocate_ two nodes with `bsub` but only _launch_ your job on one core or GPU with `jsrun`, one of the allocated nodes will be sitting idle and will show as red on the top-down view. Typically, seeing nodes highlighted in red indicates you made an error in your `jsrun`. You typically would not want to leave entire nodes vacant for your job run as you are still being charged for this idle node. This is a valuable tool to use while you are setting up jobs on Summit and Ascent to verify you are launching them as you intend.
 
 Clicking on one of the nodes in your allocation will bring up a diagram that should look familiar if you have gone through a couple of the [`jsrun` Challenge](../jsrun_Job_Launcher) examples. We recommend going through that Challenge to understand the layout of your launched job across the nodes and how to interpret this view, if you haven't already done so.
 
 <br>
 <center>
-<img src="images/jsviewer_2.png" style="width:80%">
+<img src="images/jsviewer_5.png" style="width:80%">
 </center>
 <br>
 
