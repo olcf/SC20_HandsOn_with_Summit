@@ -8,4 +8,4 @@
 
 date
 
-jsrun --smpiargs="none" -n1 -c1 -g1 -a1 nvprof --openmp-profiling off ./run
+jsrun --smpiargs="none" -n1 -c1 -g1 -a1 nvprof ./run
