@@ -28,7 +28,7 @@ Next, you will need to find the PGI compiler flag needed to compile the code wit
 First, make sure you're in the `Find_the_Compiler_Flag` directory:
 
 ```
-$ cd ~/SC19_HandsOn_with_Summit/challenges/Find_the_Compiler_Flag
+$ cd ~/SC20_HandsOn_with_Summit/challenges/Find_the_Compiler_Flag
 ```
 
 Ok, now that you think you found the correct compiler flag, add it to the end of the `CFLAGS = -Minfo=all` line in the Makefile. Then, compile the code:
