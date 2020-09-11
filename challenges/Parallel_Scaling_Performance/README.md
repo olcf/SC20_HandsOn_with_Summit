@@ -1,12 +1,18 @@
 # Parallel Scaling Performance
 
-In high-performance computing, "scaling" refers to how the performance of a parallel application changes as the number of processing element increases. The term "strong scaling" is used when the problem size stays the same as the number of processing elements increases, and the term "weak scaling" is used when the problem size increases as the number of processing elements increases. In this challenge, you will plot the strong scaling results of an application.
+In high-performance computing, "scaling" refers to how the performance of a parallel application changes as the number of processing element increases. The term "strong scaling" is used when the problem size stays the same as the number of processing elements increases, and the term "weak scaling" is used when the problem size increases as the number of processing elements increases (so the amount of work done by a single processing element stays roughly the same). In this challenge, you will plot the strong scaling results of an application.
 
 > NOTE: You will not need to edit any code. You will simply need to compile and run the code with different numbers of OpenMP threads and GPUs.
 
 ## Set Up Your Programming Environment and Compile
 
-The first thing you need to do is load the PGI compiler and CUDA Toolkit:
+First, you'll need to make sure you're in the `Parallel_Scaling_Performance/` directory:
+
+```
+$ cd ~/SC20_HandsOn_with_Summit/challenges/Parallel_Scaling_Performance
+```
+
+Next, load the PGI compiler and CUDA Toolkit:
 
 ```
 $ module load pgi cuda

@@ -273,7 +273,7 @@ int main(int argc, char** argv)
 				{
 					printf("A_ref[%d][%d] - A[%d][%d] = %f\n", iy, ix, iy, ix, A_ref[iy][ix] - A[iy][ix]);
 					printf("Exiting...\n");
-					exit;
+					exit();
 				}
 			}
 		}
