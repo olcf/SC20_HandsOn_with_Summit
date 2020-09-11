@@ -14,3 +14,6 @@ cpu_gpu_dgemm.o: cpu_gpu_dgemm.c
 
 clean:
 	rm -f cpu_gpu_dgemm *.o
+
+cleanall:
+	rm -f cpu_gpu_dgemm *.o dgemm*

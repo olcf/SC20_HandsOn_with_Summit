@@ -9,10 +9,12 @@ In this challenge, you will be given a program that initilizes two matrices with
 Before getting started, you'll need to make sure you're in the `GPU_Matrix_Multiply/` directory:
 
 ```
-$ cd ~/SC19_HandsOn_with_Summit/challenges/GPU_Matrix_Multiply/
+$ cd ~/SC20_HandsOn_with_Summit/challenges/GPU_Matrix_Multiply/
 ```
 
 Look in the code `cpu_gpu_dgemm.c` and find the `TODO` section and add in the `cublasDgemm` call.
+
+> NOTE: You do not need to perform a transpose operation on the matrices, so the `cublasOperation_t` arguments should be set to `CUBLAS_OP_N`.
 
 ## Compile the Code
 
