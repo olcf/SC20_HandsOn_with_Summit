@@ -1,4 +1,4 @@
-# Login to Access to Ascent and Clone Repository
+# Access Ascent and Clone Repository
 
 Please follow the instructions below to login to OLCF's Ascent High Performance Computer(HPC) and grab a copy of the code we'll be using.
 
