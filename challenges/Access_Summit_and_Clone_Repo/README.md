@@ -39,7 +39,6 @@ Now move into that directory:
 
 ```
 $ cd SC20_HandsOn_with_Summit
-
 ```
 
 Congratulations! You've completed your first challenge and can now move on to other challenges. Feel free to jump around to the ones you find most interesting.
