@@ -1,4 +1,4 @@
-# Basic Workflow to Run a Job on Ascent
+# Basic Workflow to Run a Job on Ascent/Summit
 
 The basic workflow for running programs on HPC systems is 1) set up your programming environment - i.e., the software you need, 2) compile the code - i.e., turn the human-readable programming language into machine code, 3) request access to one of more compute nodes, and 4) launch your executable on the compute node(s) you were allocated. In this challenge, you will perform these basic steps to see how it works.
 
