@@ -1,11 +1,11 @@
 #!/bin/bash
 
-#BSUB -P TRN001
+#BSUB -P GEN146
 #BSUB -J add_vec_cpu
 #BSUB -o add_vec_cpu.%J
 #BSUB -nnodes 1
 #BSUB -W 10
-#BSUB -U StudentsSC19
+#BSUB -U StudentsSC20
 
 date
 
