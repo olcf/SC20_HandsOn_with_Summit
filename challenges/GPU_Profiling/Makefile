@@ -1,10 +1,10 @@
 #CFLAGS = -lineinfo
 
 optimized:
-        nvcc $(CFLAGS) -o matrix_sums matrix_sums.cu
+	nvcc $(CFLAGS) -o matrix_sums_optimized matrix_sums_optimized.cu
 
 unoptimized:
-        nvcc $(CFLAGS) -o matrix_sums_solution matrix_sums_solution.cu
+	nvcc $(CFLAGS) -o matrix_sums_unoptimized matrix_sums_unoptimized.cu
 
 clean:
-        rm -f matrix_sums matrix_sums_solution
+	rm -f matrix_sums_optimized matrix_sums_unoptimized

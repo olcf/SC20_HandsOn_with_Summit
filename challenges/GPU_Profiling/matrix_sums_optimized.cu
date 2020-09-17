@@ -52,6 +52,7 @@ __global__ void column_sums(const float *A, float *sums, size_t ds){
       sum += A[idx+ds*i];         // write a for loop that will cause the thread to iterate down a column, keeeping a running sum, and write the result to sums
     sums[idx] = sum;
 }}
+
 bool validate(float *data, size_t sz){
   for (size_t i = 0; i < sz; i++)
     if (data[i] != (float)sz) {printf("results mismatch at %lu, was: %f, should be: %f\n", i, data[i], (float)sz); return false;}
