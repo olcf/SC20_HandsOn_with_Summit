@@ -1,12 +1,12 @@
 # What is MPI? 
 
-The **M**essage **P**assing **I**nterface (MIP) is a set of library functions, methods, and specifications  that you can call to help you distribute work between nodes or processors on the same node.  It does this by passing messages between the processors. It is governed by a set of community driven standards and there are several implementations of it. 
+The **M**essage **P**assing **I**nterface (MIP) is a set of library functions, methods, and specifications that can be called call distribute a code's procssing work between nodes or processors on the same node.  It does this by passing messages between the processors. It is governed by a set of community driven standards and there are several implementations of MPI. 
 
-It can be used in conjunction with threading see tutorial XXX and accelerators .For example you might use MPI pass work between compute nodes and then use threads or accelerators to divide work among the different processing elements on the node. 
+MPI can be used in conjunction with threading and accelerators. For example you might use MPI pass work between compute nodes and then use threads or accelerators to divide work among the different processing elements on the node. 
 
-In this challenge will explore an MPI hello-world and two kinds of MPI communication patterns, collective and point to point communication. We will use C code, and pass its work with MPI between CPU cores on the same node. 
+This challenge will explore an MPI hello-world and two kinds of MPI communication patterns, collective and point to point communication. We will use C code, and pass its work with MPI between CPU cores on the same node. 
 
-A good refence for learning all the details is [MPI: A Message-Passing Interface Standard Version 3.1]( https://www.mpi-forum.org/docs/mpi-3.1/mpi31-report.pdf). 
+A good refence for learning more about MPI is [MPI: A Message-Passing Interface Standard Version 3.1]( https://www.mpi-forum.org/docs/mpi-3.1/mpi31-report.pdf). 
 
 
 # MPI Functions 
