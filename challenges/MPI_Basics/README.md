@@ -8,7 +8,7 @@ This challenge will explore an MPI hello-world and two kinds of MPI communicatio
 
 A good refence for learning more about MPI is [MPI: A Message-Passing Interface Standard Version 3.1]( https://www.mpi-forum.org/docs/mpi-3.1/mpi31-report.pdf). 
 
-# MPI terminology  
+# MPI Terminology  
  
 **Communicator**  An object that represents a group of processes than can communicate with each other. 
 When a program uses MPI, all the processes are grouped in a communicator. You can picture a communicator as an envelope that groups process together, and allows them to communicate. Every communication is linked to a communicator, that allows the  communication to reach different processes. 
@@ -30,20 +30,22 @@ All C functions return integer error MPI_SUCCESS if no error.
 
 There are two functions that sanwich all MPI calls. 
 
-The top bun of the MPI sandwich, MPI_Init initializes the MPI environemnt 
+The top bun of the MPI sandwich, MPI_Init, initializes the MPI environemnt 
 ```
 int MPI_Init( int *argc, char ***argv )
 ```
 argc is a pointer to the number of arguments
 argv is a pointer to the argument vector
 
-The MPI_Init function Must be called before any other MPI calls. 
+The MPI_Init function must be called before any other MPI calls. 
 
 The bottom bun of the MPI sandwich, MPI_Finalize cleans up the MPI enviromnt. 
 ```
 int MPI_Finalize( void )
 ```
 Any MPI functions called after MPI_Finalize will not be recognized. 
+
+
 
 
 
