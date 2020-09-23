@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#BSUB -P STF007
+#BSUB -W 10
+#BSUB -nnodes 1
+#BSUB -J 01_MPI
+#BSUB -o 01_mpi.%J
+#BSUB -e 01_mpi.%J
+
+
+jsrun -n 4 -c 1 ./hello.exe
+~                               
