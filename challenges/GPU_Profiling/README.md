@@ -10,15 +10,16 @@ about the use of both tools on Summit
 
 In this challenge, you will be profiling two different CUDA programs
 `matrix_sums_unoptimized.cu` and `matrix_sums_optimized.cu`. Each file has two CUDA
-kernels, one that sums the rows of a matrix, and one that
-sums the columns of the matrix. The matrix itself is represented as one long array in [row
-major order](http://icarus.cs.weber.edu/~dab/cs1410/textbook/7.Arrays/row_major.html). We
-will be profiling two different versions of the code. In `matrix_sums_unoptimized.cu`, the
+kernels, one that sums the rows of a matrix, and one that sums the columns of the
+matrix. The matrix itself is represented as one long array in [row major
+order](http://icarus.cs.weber.edu/~dab/cs1410/textbook/7.Arrays/row_major.html). We will
+be profiling two different versions of the code. In `matrix_sums_unoptimized.cu`, the
 `row_sums` and `column_sums` kernels uses one thread per row (or one thread per column) to
-sum the whole row/column. In `matrix_sums_optimized.cu`, the `row_sums` kernel is changed so that
-it does a [parallel sweep reduction](parallel_reduction.pdf) to sum each row, using one
-threadblock per row (with 256 threads per block). The `column_sums` kernel remains the
-same.
+sum the whole row/column. In `matrix_sums_optimized.cu`, the `row_sums` kernel is changed
+so that it does a [parallel
+reduction](https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf) to sum
+each row, using one threadblock per row (with 256 threads per block). The `column_sums`
+kernel remains the same.
 
 ## Step 1: Compile the unoptimized code
 
@@ -38,8 +39,7 @@ Then you compile the `matrix_sums_unoptimized.cu` code with
 $ make unoptimized
 ```
 
-This will create a binary called `matrix_sums_unoptimized` in the directory, that is doing the
-one thread per row addition.
+This will create a binary called `matrix_sums_unoptimized` in the directory.
 
 ## Step 2: Run the program
 
@@ -50,32 +50,32 @@ $ bsub submit_unoptimized.lsf
 ```
 
 If you look inside the batch script, you will see that the program is being run with the
-Nsight System profiler `nsys profile`. This starts the profiler and attaches it to the
+Nsight Systems profiler `nsys profile`. This starts the profiler and attaches it to the
 program. Check the output file `profiling_output_unoptimized.<jobid>` and you will see the
 basic profiling output in plain text for the `row_sums` and `column_sums` kernels (scroll
 down to get past the loading text). Look at the CUDA Kernel Statistics section. Notice the
 difference in their duration? The column sum is a lot faster than the row sum. Why is
-that? `column_sums` is faster because of _coalesced memory access_. The threads next to each
-other in `column_sums` are all accessing data that are next to each other, in the array
-that stores the matrix. Since the data are close to each other, the multiple memory
-accesses are coalesced into a single memory access which is more efficient. For
-`row_sums`, the threads are accessing data that are not close to each other so memory
-access cannot be coalesced. See the Further Reading section for more resources.
+that? `column_sums` is faster because it takes advantage of _coalesced memory access_. You
+can check out [this video](https://www.youtube.com/watch?v=_qSP455IekE) for a brief
+explanation of what that is and why it's important.
+
+Also, look at the Memory Operation Statistics sections. Why does copying data
+from host to device (CUDA memcpy HtoD) take longer?
+
 
 ## Step 3: Compile the optimized code
 
-There is a way to make the `row_sums` as fast as the `column_sums`, by using [parallel
-sweep reduction](parallel_reduction.pdf). Look at the code in `matrix_sums_optimized.cu`
-and compare the `row_sums` kernel to the one in the `matrix_sums_unoptimized.cu` code.
+Now we'll profile the code in `matrix_sums_optimized.cu`. Look at the `row_sums` kernel
+code in `matrix_sums_optimized.cu` and compare it side-by-side to the code in
+`matrix_sums_unoptimized.cu`. The `column_sums` code is unchanged.
 
-Compile the code in `matrix_sums_optimized.cu` with
+Compile the code in `matrix_sums_optimized.cu` with:
 
 ```
-make optimized
+$ make optimized
 ```
 
-This will create a binary called `sums_optimized` in the directory, that is doing parallel
-sweep reduction of the sum addition.
+This will create a binary called `sums_optimized` in the directory.
 
 ## Step 4: Profile the optimized code
 
@@ -86,17 +86,14 @@ $ bsub submit_optimized.lsf
 ```
 
 This also runs the Nsight Systems profiler, same as before. Open the output file
-`profiling_output_optimizes.<jobid>` and check the duration. You can see that the
-duration for the `row_sums` is nearly equal to the `column_sums` kernel. What causes this?
-This is also because of memory coalescing and taking advantage of more parallelism
-compared to the previous code.
-
-
-## Bonus Points
-
-Can you rewrite the `column_sums` kernel in `sums_optimized.cu` to also use parallel sweep
-reduction like `row_sums` does? Does that make a difference in that kernel's performance
-compared to `row_sums` and compared to the old `column_sums`?
+`profiling_output_optimized.<jobid>` and check the duration. You can see that the duration
+for the `row_sums` is nearly equal to the `column_sums` kernel. Compare this with our
+previous output file and you can see it is much faster than the `row_sums` of our previous
+code. What causes this?  This is because of the way the `row_sums` was rewritten. It now
+takes advantage of memory coalescing and more parallelism compared to the previous
+code. The [OLCF CUDA training series](https://www.olcf.ornl.gov/cuda-training-series/) is
+an excellent resource if you want to learn more about how and why this works. You can find
+slides, recordings, and homework problems to help you learn CUDA programming and optimizing.
 
 
 # Further information
@@ -107,9 +104,10 @@ The profiler also creates a `.qdrep` file. This can be opened in the Nsight Syst
 tool (you will need to download and install it on your desktop, and download the `.qdrep`
 file to your local machine via `scp`) to provide a visualization of the program's run. You
 can find more instructions on how to get and use the GUI tool in the [Summit
-docs](https://docs.olcf.ornl.gov/systems/summit_user_guide.html#optimizing-and-profiling).
+documentation](https://docs.olcf.ornl.gov/systems/summit_user_guide.html#optimizing-and-profiling).
 
 ## Useful resources
 
 - Coffeebeforearch's video on coalescing in GPUs: https://www.youtube.com/watch?v=_qSP455IekE
+- Slides on parallel reduction: https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf
 - The OLCF CUDA training series: https://www.olcf.ornl.gov/cuda-training-series/
