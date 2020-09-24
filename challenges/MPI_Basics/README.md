@@ -46,20 +46,19 @@ MPI_Comm_size(MPI_COMM_WORLD, &size);
 
 Get the rank nubmer of each process from  communicator 
 ```
-
-
-Do some work. In this case the work will be pritning "Hello" from the ranks distributed on each processor. 
-
-
-Finalize MPI. This function cleans up MPI and release the communicator. No MPI fucntions will be recognized below this function. 
-
-```
  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
  ```
 
-Now it is your turn to turn this outline into a program that will Iniaize MPI, get the rank for each process from the MPI_COMM_WORLD commnicator, and then say "hello" from the ranks that have been distributed on each processor. 
+Pritning "Hello" from each ranks distributed on each processor. 
 
-To do this Open mpi_hello.c and enter the needed funtions after each comment in the program. The file will look like this: 
+
+Finalize MPI. This function cleans up MPI and release the communicator. No MPI fucntions will be recognized below this function. 
+```
+MPI_Finalize();
+```
+Now it is your challenge to turn this outline into a program that will Iniaize MPI, get the rank for each process from the MPI_COMM_WORLD commnicator, and then say "hello" from each rank.  
+
+To do this open mpi_hello.c and enter the needed funtions after each comment in the program. The file will look like this: 
 
 ```
 #include "stdio.h"
@@ -68,24 +67,26 @@ To do this Open mpi_hello.c and enter the needed funtions after each comment in 
 int main(int argc, char **argv)
 {
     int rank, size;
-    // Initialize MPI
+    // Initialize MPI (Put the MPI initization functions here)
     
-    //Get the number of ranks from the Communicator which in this case is called MPI_COMM_WORLD
+    
+    //Get the number of ranks (size) from the Communicator (Put the MPI size function here) 
  
-   //Get the rank for each process from the communicator. 
+  
+   
+   //Get the rank for each process from the communicator. (Put the MPI rank function here)
   
 
     printf("Hello from rank %d of %d total \n", rank, size);
     
     
-    //Clean up and finalize the MPI environment 
+    //Clean up and finalize the MPI environment (Put the MPI finalization function here) 
 
     return 0;
 }
 ```
 
-
-
+To compile mpi-hello.c 
 
 
 Communications can be either of two forms: 
