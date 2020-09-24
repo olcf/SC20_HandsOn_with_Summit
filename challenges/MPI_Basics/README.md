@@ -10,7 +10,8 @@ A good refence for learning more about MPI is [MPI: A Message-Passing Interface 
 
 # MPI Terminology  
  
-**Communicator**  An object that represents a group of processes than can communicate with each other. 
+**Communicator**   An object that represents a group of processes than can communicate with each other. 
+
 When a program uses MPI, all the processes are grouped in a communicator. You can picture a communicator as an envelope that groups process together, and allows them to communicate. Every communication is linked to a communicator, that allows the  communication to reach different processes. The first thing MPI does when it is initized, is set up the communicator so that all the other MPI function used will be able to refrence the variables needed to direct the communication from the communicator. 
 Ref https://www.codingame.com/playgrounds/349/introduction-to-mpi/mpi_comm_world-size-and-ranks
 
@@ -30,15 +31,15 @@ We will start with the basic outline of an MPI_hello world and then have you fil
 **Hello-world Outline**
 
 
-First Initize MPI. In this step all of MPI’s global and internal variables are set up and contained in a communicator. All MPI regions start with this function.  
+* First Initize MPI. In this step all of MPI’s global and internal variables are set up and contained in a communicator. All MPI regions start with this function.  
 
-It looks like this for C code:
-```
-MPI_Init(&argc, &argv);
-```
-argc and argv are empty arguments in this case.
+  It looks like this for C code:
+  ```
+  MPI_Init(&argc, &argv);
+  ```
+  argc and argv are empty arguments in this case.
 
-Next  Get the nubmer (size) of processes from the communicator. In this case, the communicator is named MPI_COMM_WORLD.
+* Next  Get the nubmer (size) of processes from the communicator. In this case, the communicator is named MPI_COMM_WORLD.
 
 ```
 MPI_Comm_size(MPI_COMM_WORLD, &size); 
