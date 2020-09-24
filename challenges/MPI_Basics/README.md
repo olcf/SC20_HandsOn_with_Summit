@@ -1,10 +1,10 @@
 # What is MPI? 
 
-The **M**essage **P**assing **I**nterface (MIP) is a set of library functions, methods, and specifications that can be called to distribute a code's procssing work between nodes or processors on the same node.  It does this by passing messages between the processors. It is governed by a set of community driven standards and there are several implementations of MPI. 
+The **M**essage **P**assing **I**nterface (MIP) is a set of library functions, methods, and specifications that can be called to distribute a code's processing work between nodes or processors on the same node.  It does this by passing messages between the processors. It is governed by a set of community driven standards and there are several implementations of MPI. 
 
-MPI can be used in conjunction with threading and accelerators. For example you might use MPI pass work between compute nodes and then use threads or accelerators to divide work among the different processing elements on the node. 
+MPI can be used in conjunction with threading and accelerators. For example, you might use MPI pass work between compute nodes and then use threads or accelerators to divide work among the different processing elements on the node. 
 
-This challenge will explore an MPI hello-world and two kinds of MPI communication patterns, collective and point to point communication. We will use C code, and pass its work with MPI between CPU cores on the same node. 
+This challenge will explore an MPI hello-world and two kinds of MPI communication patterns. We will use C code and pass its work with MPI between CPU cores on the same node. 
 
 A good refence for learning more about MPI is [MPI: A Message-Passing Interface Standard Version 3.1]( https://www.mpi-forum.org/docs/mpi-3.1/mpi31-report.pdf). 
 
@@ -12,59 +12,66 @@ A good refence for learning more about MPI is [MPI: A Message-Passing Interface 
  
 **Communicator**   An object that represents a group of processes than can communicate with each other. 
 
-When a program uses MPI, all the processes are grouped in a communicator. You can picture a communicator as an envelope that groups process together, and allows them to communicate. Every communication is linked to a communicator, that allows the  communication to reach different processes. The first thing MPI does when it is initized, is set up the communicator so that all the other MPI function used will be able to refrence the variables needed to direct the communication from the communicator. 
-Ref https://www.codingame.com/playgrounds/349/introduction-to-mpi/mpi_comm_world-size-and-ranks
+When a program uses MPI, all the processes are grouped in a communicator. You can picture a communicator as an envelope that groups process together and allows them to communicate. The first thing MPI does when it is initialized , is set up the communicator. 
 
 
-**Rank** Within a communicator each process is given a unique integer ID, Ranks start at 0 and are incremented contiguously
+**Rank** Within a communicator each process is given a unique integer ID. Ranks start at 0 and are incremented contiguously.
 
-**Size** The total number of ranks in a communicator
+**Size** The total number of ranks in a communicator.
 
-# MPI Hello-world
+# MPI Functions and Hello-world
 
 MPI consists of hundreds of functions but most users will only use a handful of them. 
-We'll start by looking at the fuctions needed for an MPI Hello world program. All functions are prefixed with MPI_ . 
-All C functions return integer error MPI_SUCCESS if no error. 
+We'll start by looking at the functions needed for an MPI Hello-world program. 
 
-We will start with the basic outline of an MPI_hello world that discusses the MPI functions needed to say Hello from each processor on a Summit node. 
+Below is an outline for the program that discuses it functions. For this challenge, you will review this outline and then enter the needed functions in your own copy of mpi-hello.c 
+
 
 **Hello-world Outline**
 
 * First initialize  MPI. 
-  This is done with a fucntion:
+  
+  This is done with a function:
 
   ```
   MPI_Init(&argc, &argv);
   ```
-  When the MPI_Init function is called, all of MPI’s global and internal variables are constructed. For example, a communicator is setup for all of the processes that were spawned, and unique ranks are assigned to each process. The argument argc and argv are empty in this case. Do not focus on them for now. 
+  When the MPI_Init function is called, all of MPI’s global and internal variables are constructed.    A communicator is setup to contain all of the processes that were spawned, and unique ranks are assigned to each process. The arguments  argc and argv are empty in this case. Do not focus on them for now. 
 
-* Get the nubmer (size) of processes from the communicator. 
+* Next get the number (size) of processes from the communicator. 
+  
   This is done with another MPI function: 
-
- ```
- MPI_Comm_size(MPI_COMM_WORLD, &size); 
- ```
- In this case, the communicator is named MPI_COMM_WORLD. This fucntion actully retruns the size of the communicator.Since the communicaetor contains all the porcess of the job, its size is the number of ranks. 
+  
+  ```
+  MPI_Comm_size(MPI_COMM_WORLD, &size); 
+  ```
+  In this case, the communicator is named MPI_COMM_WORLD. This function returns the size of the communicator which us equal to the number of ranks. 
  
-* Get the rank nubmer of each process from  communicator 
+* Next get the rank number of each process from  communicator. 
+  
   This is also done with an MPI function: 
-```
- MPI_Comm_rank(MPI_COMM_WORLD, &rank);
- ```
- Ranks are the IDs used for sending and recieving messages for each process. 
+  ```
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+  ```
+  Ranks are IDs used for sending and receiving messages for each process. 
 
-* Pritning "Hello" from each ranks distributed on each processor. 
+* Print "Hello" from each rank distributed on each processor. This is just C code. 
 
 
 * Finalize MPI. 
-  ```
-  MPI_Finalize();
-  ```
-  This function cleans up MPI and release the communicator. No MPI fucntions will be recognized below this function. 
+   
+ Yet another MPI function. 
+ ```
+ MPI_Finalize();
+ ```
+ This function cleans up MPI and release the communicator. No MPI functions will be recognized below this function. 
 
-Now it is your challenge to turn this outline into a program that will Iniaize MPI, get the rank for each process from the MPI_COMM_WORLD commnicator, and then say "hello" from each rank.  
 
-To do this open mpi_hello.c and enter the needed funtions after each comment in the program. The file will look like this: 
+Use the outline to help you enter the four needed MPI functions after each comment in the mpi-hello.c program from the repository. 
+
+To do this, make sure you are in the SC20_HandsOn_with_Summit/challenges/MPI_basics folder and then open this open mpi_hello.c with your favorite editor.  
+
+The file will look like this: 
 
 ```
 #include "stdio.h"
@@ -73,7 +80,7 @@ To do this open mpi_hello.c and enter the needed funtions after each comment in 
 int main(int argc, char **argv)
 {
     int rank, size;
-    // Initialize MPI (Put the MPI initization functions here)
+    // Initialize MPI (Put the MPI initialization functions here)
     
     
     //Get the number of ranks (size) from the Communicator (Put the MPI size function here) 
@@ -107,17 +114,9 @@ bsub submit.lsf
 ```
 
 If you had an error go back and check your code. Then recompile it and try again. 
+If it succeeded you should recive a greetting from each of the 42 cpu codes on the node. When you open the output file. 
 
 
 Communications can be either of two forms: 
 * Point-to-Point : Two processes in the same communicator are going to communicate.
 * Collective : All the processes in a communicator are going to communicate together.
-
-
-
-
-
-
-
-
-
