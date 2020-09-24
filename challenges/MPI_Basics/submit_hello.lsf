@@ -3,10 +3,10 @@
 #BSUB -P STF007
 #BSUB -W 10
 #BSUB -nnodes 1
-#BSUB -J 01_MPI
-#BSUB -o 01_mpi.%J
-#BSUB -e 01_mpi.%J
+#BSUB -J mpi_hello
+#BSUB -o mpi_hello.%J
+#BSUB -e mpi_hello.%J
 
 
-jsrun -n 4 -c 1 ./hello.exe
+jsrun -n 42 -c 1 ./run
 ~                               

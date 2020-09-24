@@ -4,14 +4,22 @@
 int main(int argc, char **argv)
 {
     int rank, size;
-    MPI_Init(&argc, &argv);
 
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    MPI_Comm_size(MPI_COMM_WORLD, &size);
+    // Initialize MPI
 
-    printf("Hello from rank %d of %d total \n", rank, size);
+     MPI_Init(&argc, &argv);  
 
-    MPI_Finalize();
+    //Get the number of ranks (size) from the Communicator  
+     
+     MPI_Comm_size(MPI_COMM_WORLD, &size);     
+
+ 
+    //Print hello from each rank 
+
+     printf("Hello from rank %d of %d total \n", rank, size);
+      
+    //Clean up and finalize the MPI environment
+
+     MPI_Finalize();
     return 0;
 }
-
