@@ -67,9 +67,7 @@ Below is an outline for the program that discuses it functions. For this challen
 
 
 
-Use the outline to help you enter the four needed MPI functions after each comment in the mpi-hello.c program from the repository. 
-
-To do this, make sure you are in the SC20_HandsOn_with_Summit/challenges/MPI_basics folder and then open this open mpi_hello.c with your favorite editor.  
+Use the outline to help you enter the four needed MPI functions after each comment in the mpi-hello.c program from the repository. To do this, make sure you are in the SC20_HandsOn_with_Summit/challenges/MPI_basics folder and then open this open mpi_hello.c with your favorite editor.  
 
 The file will look like this: 
 
@@ -103,18 +101,16 @@ To compile mpi-hello.c
 
 ```
 make
-
 ````
 
 To run the code 
 
 ```
 bsub submit.lsf 
-
 ```
 
 If you had an error go back and check your code. Then recompile it and try again. 
-If it succeeded you should recive a greetting from each of the 42 cpu codes on the node. When you open the output file. 
+If it succeeded you should recive a greetting from each of the 42 cpu cores on the node in the output file. 
 
 
 Communications can be either of two forms: 
