@@ -20,43 +20,48 @@ Ref https://www.codingame.com/playgrounds/349/introduction-to-mpi/mpi_comm_world
 
 **Size** The total number of ranks in a communicator
 
-# MPI Functions 
+# MPI Hello-world
 
 MPI consists of hundreds of functions but most users will only use a handful of them. 
 We'll start by looking at the fuctions needed for an MPI Hello world program. All functions are prefixed with MPI_ . 
 All C functions return integer error MPI_SUCCESS if no error. 
 
-We will start with the basic outline of an MPI_hello world and then have you fill in the needed MPI fucntions 
+We will start with the basic outline of an MPI_hello world that discusses the MPI functions needed to say Hello from each processor on a Summit node. 
 
 **Hello-world Outline**
 
+* First initialize  MPI. 
+  This is done with a fucntion:
 
-* First Initize MPI. In this step all of MPI’s global and internal variables are set up and contained in a communicator. All MPI regions start with this function.  
-
-  It looks like this for C code:
   ```
   MPI_Init(&argc, &argv);
   ```
-  argc and argv are empty arguments in this case.
+  When the MPI_Init function is called, all of MPI’s global and internal variables are constructed. For example, a communicator is setup for all of the processes that were spawned, and unique ranks are assigned to each process. The argument argc and argv are empty in this case. Do not focus on them for now. 
 
-* Next  Get the nubmer (size) of processes from the communicator. In this case, the communicator is named MPI_COMM_WORLD.
+* Get the nubmer (size) of processes from the communicator. 
+  This is done with another MPI function: 
 
-```
-MPI_Comm_size(MPI_COMM_WORLD, &size); 
-```
-
-Get the rank nubmer of each process from  communicator 
+ ```
+ MPI_Comm_size(MPI_COMM_WORLD, &size); 
+ ```
+ In this case, the communicator is named MPI_COMM_WORLD. This fucntion actully retruns the size of the communicator.Since the communicaetor contains all the porcess of the job, its size is the number of ranks. 
+ 
+* Get the rank nubmer of each process from  communicator 
+  This is also done with an MPI function: 
 ```
  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
  ```
+ Ranks are the IDs used for sending and recieving messages for each process. 
 
-Pritning "Hello" from each ranks distributed on each processor. 
+* Pritning "Hello" from each ranks distributed on each processor. 
 
 
-Finalize MPI. This function cleans up MPI and release the communicator. No MPI fucntions will be recognized below this function. 
-```
-MPI_Finalize();
-```
+* Finalize MPI. 
+  ```
+  MPI_Finalize();
+  ```
+  This function cleans up MPI and release the communicator. No MPI fucntions will be recognized below this function. 
+
 Now it is your challenge to turn this outline into a program that will Iniaize MPI, get the rank for each process from the MPI_COMM_WORLD commnicator, and then say "hello" from each rank.  
 
 To do this open mpi_hello.c and enter the needed funtions after each comment in the program. The file will look like this: 
@@ -88,6 +93,20 @@ int main(int argc, char **argv)
 ```
 
 To compile mpi-hello.c 
+
+```
+make
+
+````
+
+To run the code 
+
+```
+bsub submit.lsf 
+
+```
+
+If you had an error go back and check your code. Then recompile it and try again. 
 
 
 Communications can be either of two forms: 
