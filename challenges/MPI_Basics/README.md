@@ -22,14 +22,14 @@ Ref https://www.codingame.com/playgrounds/349/introduction-to-mpi/mpi_comm_world
 # MPI Functions 
 
 MPI consists of hundreds of functions but most users will only use a handful of them. 
-We'll start by looking at the fuctions needed for an MPI Hello world program.
-
-All functions are prefixed with MPI_ .
+We'll start by looking at the fuctions needed for an MPI Hello world program. All functions are prefixed with MPI_ . 
 All C functions return integer error MPI_SUCCESS if no error. 
 
 We will start with the basic outline of an MPI_hello world and then have you fill in the needed MPI fucntions 
 
 **Hello-world Outline**
+
+
 First Initize MPI. In this step all of MPI’s global and internal variables are set up and contained in a communicator. All MPI regions start with this function.  
 
 It looks like this for C code:
