@@ -19,15 +19,15 @@ When a program uses MPI, all the processes are grouped in a communicator. You ca
 
 **Size** The total number of ranks in a communicator.
 
-# MPI Functions and Hello-world
+# MPI Functions and Hello_World
 
 MPI consists of hundreds of functions but most users will only use a handful of them. 
 We'll start by looking at the functions needed for an MPI Hello-world program. 
 
-Below is an outline for the program that discuses it functions. For this challenge, you will review this outline and then enter the needed functions in your own copy of mpi-hello.c 
+Below is an outline for the program that discuses its functions. For this challenge, you will review this outline and then try to use it to find the missing MPI function in your copy of mpi_hello.c 
 
 
-**Hello-world Outline**
+**Hello_world Outline**
 
 * First initialize  MPI. 
   
@@ -36,7 +36,7 @@ Below is an outline for the program that discuses it functions. For this challen
   ```
   MPI_Init(&argc, &argv);
   ```
-  When the MPI_Init function is called, all of MPI’s global and internal variables are constructed.    A communicator is setup to contain all of the processes that were spawned, and unique ranks are assigned to each process. The arguments  argc and argv are empty in this case. Do not focus on them for now. 
+  When the MPI_Init function is called, all of MPI’s global and internal variables are constructed.  A communicator is setup to contain all of the processes that were spawned, and unique ranks are assigned to each process. The arguments argc and argv are empty in this case. Do not focus on them for now. 
 
 * Next get the number (size) of processes from the communicator. 
   
@@ -47,7 +47,7 @@ Below is an outline for the program that discuses it functions. For this challen
   ```
   In this case, the communicator is named MPI_COMM_WORLD. This function returns the size of the communicator which us equal to the number of ranks. 
  
-* Next get the rank number of each process from the communicator. 
+* Next get the rank ID of each process from the communicator. 
   
   This is also done with an MPI function: 
   ```
@@ -63,39 +63,44 @@ Below is an outline for the program that discuses it functions. For this challen
   ```
   MPI_Finalize();
   ```
-  This function cleans up MPI and release the communicator. No MPI functions will be recognized below this function. 
+  This function cleans up MPI and releases the communicator. No MPI functions will be recognized below this function. 
 
 
 
-Use the outline to help you enter the four needed MPI functions after each comment in the mpi-hello.c program from the repository. To do this, make sure you are in the SC20_HandsOn_with_Summit/challenges/MPI_basics folder and then open this open mpi_hello.c with your favorite editor.  
+Use the outline to help find and enter the missing MPI function in mpi-hello.c. To do this, make sure you are in the SC20_HandsOn_with_Summit/challenges/MPI_basics folder and then open mpi_hello.c with your favorite editor.  
 
 The file will look like this: 
 
-```
+```bash
 #include "stdio.h"
 #include "mpi.h"
 
 int main(int argc, char **argv)
 {
     int rank, size;
-    // Initialize MPI (Put the MPI initialization functions here)
-    
-    
-    //Get the number of ranks (size) from the Communicator (Put the MPI size function here) 
- 
-  
-   
-   //Get the rank for each process from the communicator. (Put the MPI rank function here)
-  
 
-    printf("Hello from rank %d of %d total \n", rank, size);
-    
-    
-    //Clean up and finalize the MPI environment (Put the MPI finalization function here) 
+    // Initialize MPI
 
+     MPI_Init(&argc, &argv);
+
+    //Get the number of ranks (size) from the Communicator  
+
+     MPI_Comm_size(MPI_COMM_WORLD, &size);
+
+
+    //Print hello from each rank 
+
+     printf("Hello from rank %d of %d total \n", rank, size);
+
+    //Clean up and finalize the MPI environment
+
+     MPI_Finalize();
     return 0;
 }
+
 ```
+
+Once you think you have updated the file to include the missing funtion compile the program. 
 
 To compile mpi-hello.c 
 
@@ -106,11 +111,18 @@ make
 To run the code 
 
 ```
-bsub submit.lsf 
+bsub submit_hello.lsf 
 ```
 
+If it succeeded you should see the following output in the mpi_hello output file: 
+
+```
+Hello from rank 3 of 4 total
+Hello from rank 1 of 4 total
+Hello from rank 0 of 4 total
+
+```
 If you had an error go back and check your code. Then recompile it and try again. 
-If it succeeded you should recive a greetting from each of the 42 cpu cores on the node in the output file. 
 
 
 Communications can be either of two forms: 
