@@ -47,7 +47,7 @@ Below is an outline for the program that discuses it functions. For this challen
   ```
   In this case, the communicator is named MPI_COMM_WORLD. This function returns the size of the communicator which us equal to the number of ranks. 
  
-* Next get the rank number of each process from  communicator. 
+* Next get the rank number of each process from the communicator. 
   
   This is also done with an MPI function: 
   ```
@@ -59,11 +59,10 @@ Below is an outline for the program that discuses it functions. For this challen
 
 
 * Finalize MPI. 
-   
- Yet another MPI function. 
- ```
- MPI_Finalize();
- ```
+  Yet another MPI function. 
+  ```
+  MPI_Finalize();
+  ```
  This function cleans up MPI and release the communicator. No MPI functions will be recognized below this function. 
 
 
