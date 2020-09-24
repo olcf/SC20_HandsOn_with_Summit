@@ -63,7 +63,8 @@ Below is an outline for the program that discuses it functions. For this challen
   ```
   MPI_Finalize();
   ```
- This function cleans up MPI and release the communicator. No MPI functions will be recognized below this function. 
+  This function cleans up MPI and release the communicator. No MPI functions will be recognized below this function. 
+
 
 
 Use the outline to help you enter the four needed MPI functions after each comment in the mpi-hello.c program from the repository. 
