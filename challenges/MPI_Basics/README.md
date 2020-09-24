@@ -102,7 +102,7 @@ int main(int argc, char **argv)
 
 Once you think you have updated the file to include the missing function, compile the code. 
 
-To compile mpi-hello.c 
+To compile mpi_hello.c 
 
 ```
 make
@@ -114,7 +114,7 @@ To run the code
 bsub submit_hello.lsf 
 ```
 
-If it succeeded you should see the following output in the mpi_hello. output file: 
+If it succeeded, you should see the following output in the mpi_hello. output file: 
 
 ```
 Hello from rank 3 of 4 total
@@ -124,7 +124,7 @@ Hello from rank 0 of 4 total
 ```
 If you had an error go back and check your code. Then recompile it and try again. 
 
-# MPI Communcation Patterns
+# MPI Communication Patterns
 MPI Communications can be either of two forms: 
 * Point-to-Point : Two processes in the same communicator are going to communicate.
 * Collective : All the processes in a communicator are going to communicate together.
@@ -137,8 +137,4 @@ Several send/receive flavors available:
 * Blocking/non-blocking
 * Buffered/non-buffered
 * Combined send-receive
-
-
-
-
 
