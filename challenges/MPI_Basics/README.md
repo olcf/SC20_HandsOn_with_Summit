@@ -124,21 +124,14 @@ Hello from rank 0 of 4 total
 ```
 If you had an error go back and check your code. Then recompile it and try again. 
 
-# MPI Communication Patterns
-MPI Communications can be either of two forms: 
-* Point-to-Point : Two processes in the same communicator are going to communicate.
-* Collective : All the processes in a communicator are going to communicate together.
-
-# Point to Point MPI Communication 
-
-Point to Point routines involve two and only two processes. One process explicitly initiates send operation and one process explicitly initiates receive operation
 
 
 # Point to Point MPI Communication 
 
 We’ll dive a little deeper into understanding MPI functions as we explore Point to Point communication. 
 
-Point to Point routines involve two and only two processes. One process explicitly initiates send operation and one process explicitly initiates receive operation. 
+Point to Point routines involve two and only two processes. One process explicitly initiates send operation and one process explicitly initiates receive operation.
+For example Process 0 sends the message "Hello!" to process 1. 
 
 Below is the MPI_Send function. It is used to send a message to a process. 
 
@@ -149,17 +142,17 @@ int MPI_Send(void *buf, int count,
 
 ```
 In this function: 
-* buf -Initial integer address of send buffer. The message you want to send will be packedup into this buffer. 
+* buf -Initial integer address of send buffer. The message you want to send will be packed0up into this buffer. 
 
-* count- Number of elements to send. For example, if you are going to send a message that is 14 charaters long, it will have a count of 14 elements to send. 
+* count- Number of elements to send. For example, if you are going to send a message that is 6 charaters long, it will have a count of 6 elements. 
 
-* datatype - This is the MPI datatype of each element in send buffer. Many MPI functions require a datatype. There are built-in types for all intrinsic C types
-MPI_INT, MPI_FLOAT, MPI_DOUBLE, MPI_CHAR …
+* datatype - This is the MPI datatype of each element in the send buffer. There are built-in data types for all intrinsic C types
+MPI_INT, MPI_FLOAT, MPI_DOUBLE, MPI_CHAR … . If you wanted to send "Hello!" from procsess 0 to process 1, you would used a datatype of MPI_CHAR. 
 
 
 * Dest- Rank of destination. This is the ID of where the message will go. 
 
-* Tag -Integer tag used by receiver to identify message
+* Tag -Integer tag used by receiver to identify message. n
 
 ( Comm- Communicator 
 
@@ -168,3 +161,7 @@ Several send/receive flavors available:
 * Buffered/non-buffered
 * Combined send-receive
 
+# MPI Communication Patterns
+MPI Communications can be either of two forms: 
+* Point-to-Point : Two processes in the same communicator are going to communicate.
+* Collective : All the processes in a communicator are going to communicate together.
