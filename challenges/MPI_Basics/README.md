@@ -142,7 +142,7 @@ int MPI_Send(void *buf, int count,
 
 ```
 In this function: 
-* buf -Initial integer address of send buffer. The message you want to send will be packed0up into this buffer. 
+* buf -Initial integer address of send buffer. The message you want to send will be packed-up into this buffer. 
 
 * count- Number of elements to send. For example, if you are going to send a message that is 6 charaters long, it will have a count of 6 elements. 
 
@@ -152,9 +152,32 @@ MPI_INT, MPI_FLOAT, MPI_DOUBLE, MPI_CHAR … . If you wanted to send "Hello!" fr
 
 * Dest- Rank of destination. This is the ID of where the message will go. 
 
-* Tag -Integer tag used by receiver to identify message. n
+* Tag -Integer tag used by receiver to identify message. 
 
-( Comm- Communicator 
+* Comm- Communicator 
+
+
+
+Here is the MPI Recieve function. 
+
+```
+int MPI_Recv(void *buf, int count,
+             MPI_Datatype datatype, int source,
+             int tag, MPI_Comm comm, MPI_Status status
+```
+
+In this case the functions arguments mean: 
+
+* buf- Initial address of receive buffer
+* count Maximum number of elements that can be received
+* datatype - MPI_Datatype of each element in receive buffer
+* source- Rank of source
+* tag Integer tag used to identify message
+* comm- Communicator
+* status- Struct containing information on received message 
+
+
+
 
 Several send/receive flavors available:
 * Blocking/non-blocking
