@@ -131,7 +131,8 @@ If you had an error go back and check your code. Then recompile it and try again
 We’ll dive a little deeper into understanding MPI functions as we explore Point to Point communication. 
 
 Point to Point routines involve two and only two processes. One process explicitly initiates send operation and one process explicitly initiates receive operation.
-For example Process 0 sends the message "Hello!" to process 1. 
+For example, in the code that you will work with for this part of the challenge,  Process 0 will send a message "Hello!" to process 1. 
+The two functions we will use to accomplish this will be MPI_Send and MPI_Recieve. 
 
 Below is the MPI_Send function. It is used to send a message to a process. 
 
@@ -175,6 +176,94 @@ In this case the functions arguments mean:
 * tag Integer tag used to identify message
 * comm- Communicator
 * status- Struct containing information on received message 
+
+
+Here is the code ptp.c, where process 0 will send the message "hello!" to process 1. However, the recive funtion has three missing argumemts labled A, B. and C. 
+You challenge is to use the arugments in the send function and the function defintions above to fill in the missing arguments. 
+
+Some of the questions to help you:
+Why does the MPI_Send funtion say that the message has 6 elements?
+Why data type is "hello!" ? 
+Where is the message going? 
+
+```
+#include <stdio.h>
+#include <string.h>
+#include "mpi.h"
+
+int main(int argc, char ** argv)
+{
+  int rank, ntag = 100;
+  char message[14];
+  MPI_Status status;
+
+  /*----------------*/
+  /* Initialize MPI */
+  /*----------------*/
+
+  MPI_Init(&argc, &argv);
+
+  /*------------------------------------------------------*/
+  /* Get my rank in the MPI_COMM_WORLD communicator group */
+  /*------------------------------------------------------*/
+
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
+  /*---------------------------------------*/
+  /* Process 0 sends a message to process 1*/
+  /*---------------------------------------*/
+
+  if (rank == 0) {
+    strcpy(message, "hello!");
+    MPI_Send(&message, 6, MPI_CHAR, 1, ntag, MPI_COMM_WORLD);
+  }
+
+  /*--------------------------------------------*/
+  /* Process 1 receives a message from process 0*/
+  /* and outputs the result                     */
+  /*--------------------------------------------*/
+
+  if (rank == 1 ) {
+    MPI_Recv(&message, A?, B?, C?, ntag, MPI_COMM_WORLD, &status);
+    printf("Process %d : %s\n", rank, message);
+  }
+
+  /*--------------*/
+  /* Finalize MPI */
+  /*--------------*/
+
+  MPI_Finalize();
+
+}
+```
+
+To conquer the challenge: 
+1. Determine the missing arguments. 
+
+2. Go to SC20_HandsOn_with_Summit/challenges/MPI_basics/ptp/. 
+```
+cd SC20_HandsOn_with_Summit/challenges/MPI_basics/ptp/
+
+````
+3. Edit the Recieve funtion in ptp.c with your A, B and C arguemnts. 
+
+
+
+4.Complle ptp.c 
+
+```
+Make
+
+```
+
+5. Submit the job. 
+
+```
+submit_ptp.lsf
+
+```
+
+If your code ran correctly, you will see. 
 
 
 
