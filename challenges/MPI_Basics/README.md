@@ -167,7 +167,7 @@ int MPI_Recv(void *buf, int count,
              int tag, MPI_Comm comm, MPI_Status status
 ```
 
-In this case the functions arguments mean: 
+In this case the function's arguments mean: 
 
 * buf- Initial address of receive buffer
 * count Maximum number of elements that can be received
@@ -178,14 +178,16 @@ In this case the functions arguments mean:
 * status- Struct containing information on received message 
 
 ***NEED TO EXPLAIN  MPI_Comm_rank(MPI_COMM_WORLD, &rank);**
+**general spelling editing** 
 
 
-Here is the code ptp.c, where process 0 will send the message "hello!" to process 1. However, the recive funtion has three missing argumemts labled A, B. and C. 
-You challenge is to use the arugments in the send function and the function defintions above to fill in the missing arguments. 
+
+Here is the code ptp.c, where process 0 will send the message "hello!" to process 1. However, the receive funtion has three missing argumemts labled A, B. and C. 
+Your challenge is to use the arugments in the send function and the function defintions above to fill in the missing arguments. 
 
 Some of the questions to help you:
 Why does the MPI_Send funtion say that the message has 6 elements?
-Why data type is "hello!" ? 
+Why datatype is "hello!" ? 
 Where is the message going? 
 
 ```
