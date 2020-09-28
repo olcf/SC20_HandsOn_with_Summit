@@ -132,7 +132,7 @@ We’ll dive a little deeper into understanding MPI functions as we explore Poin
 
 Point to Point routines involve two and only two processes. One process explicitly initiates send operation and one process explicitly initiates receive operation.
 For example, in the code that you will work with for this part of the challenge,  Process 0 will send a message "Hello!" to process 1. 
-The two functions we will use to accomplish this will be MPI_Send and MPI_Recieve. 
+The two functions we will use to accomplish this will be MPI_Send and MPI_Recv. 
 
 Below is the MPI_Send function. It is used to send a message to a process. 
 
@@ -176,6 +176,8 @@ In this case the functions arguments mean:
 * tag Integer tag used to identify message
 * comm- Communicator
 * status- Struct containing information on received message 
+
+***NEED TO EXPLAIN  MPI_Comm_rank(MPI_COMM_WORLD, &rank);**
 
 
 Here is the code ptp.c, where process 0 will send the message "hello!" to process 1. However, the recive funtion has three missing argumemts labled A, B. and C. 
@@ -263,7 +265,7 @@ submit_ptp.lsf
 
 ```
 
-If your code ran correctly, you will see. 
+If your code ran correctly, you will see . . .  
 
 
 
