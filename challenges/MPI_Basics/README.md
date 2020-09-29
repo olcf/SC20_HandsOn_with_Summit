@@ -130,9 +130,12 @@ If you had an error go back and check your code. Then recompile it and try again
 
 We’ll dive a little deeper into understanding MPI functions as we explore Point to Point communication. 
 
-Point to Point routines involve two and only two processes. One process explicitly initiates send operation and one process explicitly initiates receive operation.
-For example, in the code that you will work with for this part of the challenge,  Process 0 will send a message "Hello!" to process 1. 
-The two functions we will use to accomplish this will be MPI_Send and MPI_Recv. 
+Point to Point routines involve two and only two processes. One process explicitly initiates a send operation and one process explicitly initiates a receive operation.
+
+Point to Point communicaation is one way you can finely control how you divide work between processors.  
+
+In the code that you will work with for this part of the challenge, Process 0 will send a message "Hello!" to process 1. 
+The two new MPI functions we will use to accomplish this will be MPI_Send and MPI_Recv. We will also need the MPI_Comm_rank function that you just learned about to get the ranks of the processes from the communictor. 
 
 Below is the MPI_Send function. It is used to send a message to a process. 
 
@@ -148,7 +151,7 @@ In this function:
 * count- Number of elements to send. For example, if you are going to send a message that is 6 charaters long, it will have a count of 6 elements. 
 
 * datatype - This is the MPI datatype of each element in the send buffer. There are built-in data types for all intrinsic C types
-MPI_INT, MPI_FLOAT, MPI_DOUBLE, MPI_CHAR … . If you wanted to send "Hello!" from procsess 0 to process 1, you would used a datatype of MPI_CHAR. 
+MPI_INT, MPI_FLOAT, MPI_DOUBLE, MPI_CHAR … . If you wanted to send "hello!" from procsess 0 to process 1, you would used a datatype of MPI_CHAR. 
 
 
 * Dest- Rank of destination. This is the ID of where the message will go. 
