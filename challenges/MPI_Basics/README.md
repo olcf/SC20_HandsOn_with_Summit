@@ -180,11 +180,6 @@ In this case the function's arguments mean:
 * comm- Communicator
 * status- Struct containing information on received message 
 
-***NEED TO EXPLAIN  MPI_Comm_rank(MPI_COMM_WORLD, &rank);**
-**general spelling editing** 
-
-
-
 Here is the code ptp.c, where process 0 will send the message "hello!" to process 1. However, the receive funtion has three missing argumemts labled A, B. and C. 
 Your challenge is to use the arugments in the send function and the function defintions above to fill in the missing arguments. 
 
@@ -225,11 +220,13 @@ int main(int argc, char ** argv)
     MPI_Send(&message, 6, MPI_CHAR, 1, ntag, MPI_COMM_WORLD);
   }
 
-  /*--------------------------------------------*/
-  /* Process 1 receives a message from process 0*/
-  /* and outputs the result                     */
-  /*--------------------------------------------*/
-
+  /*----------------------------------------------*/
+  /* Process 1 receives a message from process 0  */
+  /* and outputs the result                       */
+  /* User the send function and the defintion     */
+  /* of MPI_Recv to fill in A,B and C below       */
+  /*----------------------------------------------*/
+  
   if (rank == 1 ) {
     MPI_Recv(&message, A?, B?, C?, ntag, MPI_COMM_WORLD, &status);
     printf("Process %d : %s\n", rank, message);
@@ -270,17 +267,16 @@ submit_ptp.lsf
 
 ```
 
-If your code ran correctly, you will see . . .  
+If your code ran correctly, you will see:
+
+```
+Process 1 : hello!
+```
 
 
+ If you want to know more about point to point communcaiton see: 
 
 
-Several send/receive flavors available:
-* Blocking/non-blocking
-* Buffered/non-buffered
-* Combined send-receive
+# MPI Collectives 
 
-# MPI Communication Patterns
-MPI Communications can be either of two forms: 
-* Point-to-Point : Two processes in the same communicator are going to communicate.
 * Collective : All the processes in a communicator are going to communicate together.
