@@ -13,4 +13,4 @@ clean:
 	rm -f run *.o
 
 cleanall:
-	rm -f run *.o ptp*
+	rm -f run *.o 

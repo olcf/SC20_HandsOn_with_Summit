@@ -25,25 +25,19 @@ int main(int argc, char ** argv)
   /*---------------------------------------*/
 	
   if (rank == 0) {
-    strcpy(message, "Hello,World!");
-    MPI_Send(&message, 14, MPI_CHAR, 1, ntag, MPI_COMM_WORLD);
+    strcpy(message, "hello!");
+    MPI_Send(&message, 6, MPI_CHAR, 1, ntag, MPI_COMM_WORLD);
   }
 
-  /*--------------------------------------------*/
-  /* Process 1 receives a message from process 0*/
-  /* and outputs the result                     */
-  /*--------------------------------------------*/
+  /*----------------------------------------------*/
+  /* Process 1 receives a message from process 0  */
+  /* and outputs the result                       */
+  /* User the send function and the defintion     */
+  /* of MPI_Recv to fill in A,B and C below       */ 
+  /*----------------------------------------------*/
 
   if (rank == 1 ) {
-
-  /* Fill in the the mssing MPI_RECIEVE function.*/
-  /* The message buffer is called &message.      */
-  /* It is 14 charaters long.                    */      
-  /* Its format is MPI_CHAR                      */
-
- 
-
-    
+    MPI_Recv(&message, 6, MPI_CHAR, 0, ntag, MPI_COMM_WORLD, &status);
     printf("Process %d : %s\n", rank, message);
   }
 
