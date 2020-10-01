@@ -198,11 +198,11 @@ In this case the function's arguments mean:
 * comm- Communicator
 * status- Struct containing information on received message 
 
-Here is the code ptp.c, where process 0 will send the message "hello!" to process 1. However, the receive funtion has three missing argumemts labled A, B. and C. 
-Your challenge is to use the arugments in the send function and the function defintions above to fill in the missing arguments. 
+Here is the code ptp.c, where process 0 will send the message "hello!" to process 1. However, the receive function has three missing arguments labeled A, B. and C. 
+Your challenge is to use the arguments in the send function and the function definitions above to fill in the missing arguments. 
 
 Some of the questions to help you:
-Why does the MPI_Send funtion say that the message has 6 elements?
+Why does the MPI_Send function say that the message has 6 elements?
 Why datatype is "hello!" ? 
 Where is the message going? 
 
@@ -241,7 +241,7 @@ int main(int argc, char ** argv)
   /*----------------------------------------------*/
   /* Process 1 receives a message from process 0  */
   /* and outputs the result                       */
-  /* User the send function and the defintion     */
+  /* Use the send function and the definition     */
   /* of MPI_Recv to fill in A,B and C below       */
   /*----------------------------------------------*/
   
@@ -267,7 +267,7 @@ To conquer the challenge:
 cd SC20_HandsOn_with_Summit/challenges/MPI_basics/ptp/
 
 ````
-3. Edit the Recieve funtion in ptp.c with your A, B and C arguemnts. 
+3. Edit the Receive function in ptp.c with your A, B and C arguments. 
 
 
 
@@ -292,7 +292,7 @@ Process 1 : hello!
 ```
 
 
- If you want to know more about point to point communcaiton see: 
+ If you want to know more about point to point communication see: 
 
 
 # MPI Collectives 
