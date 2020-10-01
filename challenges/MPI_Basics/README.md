@@ -150,10 +150,10 @@ We’ll dive a little deeper into understanding MPI functions as we explore Poin
 
 Point to Point routines involve two and only two processes. One process explicitly initiates a send operation and one process explicitly initiates a receive operation.
 
-Point to Point communicaation is one way you can finely control how you divide work between processors.  
+Point to Point communication is one way you can finely control how you divide work between processors.  
 
 In the code that you will work with for this part of the challenge, Process 0 will send a message "Hello!" to process 1. 
-The two new MPI functions we will use to accomplish this will be MPI_Send and MPI_Recv. We will also need the MPI_Comm_rank function that you just learned about to get the ranks of the processes from the communictor. 
+The two new MPI functions we will use to accomplish this will be MPI_Send and MPI_Recv. We will also need the MPI_Comm_rank function that you just learned about to get the ranks of the processes from the communicator. 
 
 Below is the MPI_Send function. It is used to send a message to a process. 
 
@@ -166,10 +166,10 @@ int MPI_Send(void *buf, int count,
 In this function: 
 * buf -Initial integer address of send buffer. The message you want to send will be packed-up into this buffer. 
 
-* count- Number of elements to send. For example, if you are going to send a message that is 6 charaters long, it will have a count of 6 elements. 
+* count- Number of elements to send. For example, if you are going to send a message that is 6 characters long, it will have a count of 6 elements. 
 
 * datatype - This is the MPI datatype of each element in the send buffer. There are built-in data types for all intrinsic C types
-MPI_INT, MPI_FLOAT, MPI_DOUBLE, MPI_CHAR … . If you wanted to send "hello!" from procsess 0 to process 1, you would used a datatype of MPI_CHAR. 
+MPI_INT, MPI_FLOAT, MPI_DOUBLE, MPI_CHAR … . If you wanted to send "hello!" from process 0 to process 1, you would used a datatype of MPI_CHAR. 
 
 
 * Dest- Rank of destination. This is the ID of where the message will go. 
@@ -180,7 +180,7 @@ MPI_INT, MPI_FLOAT, MPI_DOUBLE, MPI_CHAR … . If you wanted to send "hello!" fr
 
 
 
-Here is the MPI Recieve function. 
+Here is the MPI Receive function. 
 
 ```
 int MPI_Recv(void *buf, int count,
@@ -292,7 +292,7 @@ Process 1 : hello!
 ```
 
 
- If you want to know more about point to point communication see: 
+ If you want to know more about point to point communication, see: 
 
 
 # MPI Collectives 
