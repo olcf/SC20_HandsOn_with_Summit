@@ -300,17 +300,18 @@ Process 1 : hello!
 
 # MPI Collectives 
 
-The last type of MPI communicaiton we will introduce is Collective Communcation, which involves all the processes in a communicator.
-In fact all processes in communicator must participate. 
-Collevtive Communcation serves several purposes:
+The last type of MPI communication we will introduce is Collective Communication, which involves all the processes in a communicator.
+In fact, all processes in communicator must participate. 
+Collective Communication serves several purposes:
 * Synchronization
 * Data movement
 * Reductions
+
 Several routines originate or terminate at a single process known as the “root”.
 
-For this introduction we'll look at the broadcast, where the root process sends data to all the other processes. One of the main uses of broadcasting is to send configuration parameters, like initial condtions, to all processes in a parallel program. 
+For this introduction we'll look at the broadcast, where the root process sends data to all the other processes. One of the main uses of broadcasting is to send configuration parameters, like initial conditions, to all processes in a parallel program. 
 
-Here is the broadcast funtion:
+Here is the broadcast function:
 
 ```
 int MPI_Bcast(void *buf, int count, MPI_Datatype datatype, int root, MPI_Comm comm)
@@ -350,9 +351,3 @@ int main(int argc, char **argv)
 
 
 
-
-
-
-
-
-* Collective : All the processes in a communicator are going to communicate together.
