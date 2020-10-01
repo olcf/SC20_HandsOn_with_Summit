@@ -32,7 +32,7 @@ int main(int argc, char ** argv)
   /*----------------------------------------------*/
   /* Process 1 receives a message from process 0  */
   /* and outputs the result                       */
-  /* User the send function and the defintion     */
+  /* Use the send function and the definition     */
   /* of MPI_Recv to fill in A,B and C below       */ 
   /*----------------------------------------------*/
 
@@ -49,4 +49,3 @@ int main(int argc, char ** argv)
   MPI_Finalize();
 
 }
-
