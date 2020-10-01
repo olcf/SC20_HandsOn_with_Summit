@@ -148,9 +148,9 @@ If you had an error go back and check your code. Then recompile it and try again
 
 We’ll dive a little deeper into understanding MPI functions as we explore Point to Point communication. 
 
-Point to Point routines involve two and only two processes. One process explicitly initiates a send operation and one process explicitly initiates a receive operation.
+Point to Point communication is one way you can finely control how you divide work between processors. Point to Point routines involve two and only two processes. One process explicitly initiates a send operation and one process explicitly initiates a receive operation.
 
-Point to Point communication is one way you can finely control how you divide work between processors.  
+
 
 In the code that you will work with for this part of the challenge, Process 0 will send a message "Hello!" to process 1. 
 The two new MPI functions we will use to accomplish this will be MPI_Send and MPI_Recv. We will also need the MPI_Comm_rank function that you just learned about to get the ranks of the processes from the communicator. 
@@ -178,7 +178,7 @@ MPI_INT, MPI_FLOAT, MPI_DOUBLE, MPI_CHAR … . If you wanted to send "hello!" fr
 
 * Comm- Communicator 
 
-
+This functions retruns after send buffer is ready to reuse. 
 
 Here is the MPI Receive function. 
 
@@ -197,6 +197,9 @@ In this case the function's arguments mean:
 * tag Integer tag used to identify message
 * comm- Communicator
 * status- Struct containing information on received message 
+
+This functions retruns after receive buffer is ready to reuse. 
+
 
 Here is the code ptp.c, where process 0 will send the message "hello!" to process 1. However, the receive function has three missing arguments labeled A, B. and C. 
 Your challenge is to use the arguments in the send function and the function definitions above to fill in the missing arguments. 
@@ -292,9 +295,64 @@ Process 1 : hello!
 ```
 
 
- If you want to know more about point to point communication, see: 
+ If you want to know more about point to point communication, including how to aviod dead-locking your processes, see: [https://www.sciencedirect.com/topics/computer-science/point-to-point-communication](https://www.sciencedirect.com/topics/computer-science/point-to-point-communication) 
 
 
 # MPI Collectives 
+
+The last type of MPI communicaiton we will introduce is Collective Communcation, which involves all the processes in a communicator.
+In fact all processes in communicator must participate. 
+Collevtive Communcation serves several purposes:
+* Synchronization
+* Data movement
+* Reductions
+Several routines originate or terminate at a single process known as the “root”.
+
+For this introduction we'll look at the broadcast, where the root process sends data to all the other processes. One of the main uses of broadcasting is to send configuration parameters, like initial condtions, to all processes in a parallel program. 
+
+Here is the broadcast funtion:
+
+```
+int MPI_Bcast(void *buf, int count, MPI_Datatype datatype, int root, MPI_Comm comm)
+```
+The function arguments are: 
+* buf - Initial address of send buffer
+* count - Number of elements to send
+* datatype - Datatype of each element in send buffer
+* root - Rank of node that will broadcast buf 
+* comm - Communicator
+
+
+```bash
+#include “stdio.h”
+#include “mpi.h”
+
+int main(int argc, char **argv)
+{
+    int rank, root, bcast_data;
+    root = 0;
+    if(rank == root)
+           bcast_data = 10; 
+
+    MPI_Init(&argc, &argv);
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
+    MPI_Bcast(&bcast_data, 1, MPI_INT, root, MPI_COMM_WORLD);
+    
+    printf("Rank %d has bcast_data = %d\n", rank, bcast_data);
+  
+    MPI_Finalize();
+    return 0;
+}
+```
+
+
+
+
+
+
+
+
+
 
 * Collective : All the processes in a communicator are going to communicate together.
