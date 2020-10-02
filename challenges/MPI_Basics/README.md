@@ -30,7 +30,7 @@ The first thing MPI does when it is initialized, is set up the communicator. You
 
 <br>
 <center>
-<img src="images/comm.png" style="width:40%">
+<img src="images/comm.png" width="300 height="300">
 </center>
 <br>
 
