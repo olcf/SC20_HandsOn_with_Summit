@@ -18,6 +18,11 @@ A good refence for learning more about MPI is [MPI: A Message-Passing Interface 
 
 **MPI Region** The part of the code that will be executed in parallel using one MPI communicator. It will always be sandwiched between  MPI_Init and MPI_Finalize function calls. 
 
+<br>
+<center>
+<img src="images/MPI_burger.png" style="width:40%">
+</center>
+<br>
 The first thing MPI does when it is initialized, is set up the communicator. You can think of a communicator as a package that holds all the needed organizational information for its MPI region in the code. Inside the communicator each process is given a rank. The size of the communicator is equal to its total number of ranks. All MPI function calls within the same MPI region will get each process’s rank from the communicator.
 
 
