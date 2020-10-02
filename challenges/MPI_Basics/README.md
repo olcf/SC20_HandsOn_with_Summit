@@ -12,7 +12,7 @@ A good refence for learning more about MPI is [MPI: A Message-Passing Interface 
  
 **Communicator**   An object that represents a group of processes than can communicate with each other. 
 
-**Rank** Within a communicator each process is given a unique integer ID. Ranks start at 0 and are incremented contiguously.
+**Rank** Within a communicator each process is given a unique integer ID. Ranks start at 0 and are incremented contiguously. Ranks can be mapped to hardware processing elements like CPU cores. 
 
 **Size** The total number of ranks in a communicator.
 
@@ -25,7 +25,7 @@ The first thing MPI does when it is initialized, is set up the communicator. You
 
 <br>
 <center>
-<img src="images/comm.png" style="width:60%">
+<img src="images/comm.png" style="width:40%">
 </center>
 <br>
 
