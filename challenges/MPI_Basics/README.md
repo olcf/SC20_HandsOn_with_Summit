@@ -23,6 +23,7 @@ A good refence for learning more about MPI is [MPI: A Message-Passing Interface 
 <img src="images/MPI_burger.png" width=200" heigth="200">
 </center>
 <br>
+
 **MPI Region**
                                                         
                                                         
@@ -33,6 +34,7 @@ The first thing MPI does when it is initialized, is set up the communicator. You
 <img src="images/comm.png" width="700 height="700">
 </center>
 <br>
+
 **A communicator of size 8, with 8 ranks that map to 8 processes running on 8 CPU cores.** 
 
 # MPI Functions and Hello_World
