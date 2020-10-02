@@ -23,6 +23,7 @@ A good refence for learning more about MPI is [MPI: A Message-Passing Interface 
 <img src="images/MPI_burger.png" width=200" heigth="200">
 </center>
 <br>
+**MPI Region**
                                                         
                                                         
 The first thing MPI does when it is initialized, is set up the communicator. You can think of a communicator as a package that holds all the needed organizational information for its MPI region in the code. Inside the communicator each process is given a rank. The size of the communicator is equal to its total number of ranks. All MPI function calls within the same MPI region will get each process’s rank from the communicator.
@@ -32,7 +33,7 @@ The first thing MPI does when it is initialized, is set up the communicator. You
 <img src="images/comm.png" width="700 height="700">
 </center>
 <br>
-A 
+**A communicator of size 8, with 8 ranks that map to 8 processes running on 8 CPU cores.** 
 
 # MPI Functions and Hello_World
 
