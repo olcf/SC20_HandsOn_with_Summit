@@ -23,7 +23,11 @@ The first thing MPI does when it is initialized, is set up the communicator. You
 
 
 
-
+<br>
+<center>
+<img src="images/comm.png" style="width:80%">
+</center>
+<br>
 
 
 # MPI Functions and Hello_World
