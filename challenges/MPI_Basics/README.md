@@ -12,12 +12,19 @@ A good refence for learning more about MPI is [MPI: A Message-Passing Interface 
  
 **Communicator**   An object that represents a group of processes than can communicate with each other. 
 
-When a program uses MPI, all the processes are grouped in a communicator. You can picture a communicator as an envelope that groups process together and allows them to communicate. The first thing MPI does when it is initialized , is set up the communicator. 
-
-
 **Rank** Within a communicator each process is given a unique integer ID. Ranks start at 0 and are incremented contiguously.
 
 **Size** The total number of ranks in a communicator.
+
+**MPI Region** The part of the code that will be executed in parallel using one MPI communicator. It will always be sandwiched between  MPI_Init and MPI_Finalize function calls. 
+
+The first thing MPI does when it is initialized, is set up the communicator. You can think of a communicator as a package that holds all the needed organizational information for its MPI region in the code. Inside the communicator each process is given a rank. The size of the communicator is equal to its total number of ranks. All MPI function calls within the same MPI region will get each process’s rank from the communicator.
+
+
+
+
+
+
 
 # MPI Functions and Hello_World
 
