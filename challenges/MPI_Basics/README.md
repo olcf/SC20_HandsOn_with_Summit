@@ -323,9 +323,11 @@ Collective Communication serves several purposes:
 * Data movement
 * Reductions
 
-Several routines originate or terminate at a single process known as the “root”.
+Routines often originate or terminate at a single process known as the “root”.
 
 For this introduction we'll look at the broadcast, where the root process sends data to all the other processes. One of the main uses of broadcasting is to send configuration parameters, like initial conditions, to all processes in a parallel program. 
+
+Te
 
 Here is the broadcast function:
 
