@@ -332,10 +332,10 @@ Te
 Here is the broadcast function:
 
 ```
-int MPI_Bcast(void *buf, int count, MPI_Datatype datatype, int root, MPI_Comm comm)
+int MPI_Bcast(void *data, int count, MPI_Datatype datatype, int root, MPI_Comm comm)
 ```
 The function arguments are: 
-* buf - Initial address of send buffer
+* data - Initial address and name of send buffer
 * count - Number of elements to send
 * datatype - Datatype of each element in send buffer
 * root - Rank of node that will broadcast buf 
@@ -363,6 +363,28 @@ int main(int argc, char **argv)
     MPI_Finalize();
     return 0;
 }
+```
+
+
+To find this code: 
+
+```
+$ cd SC20_HandsOn_with_Summit/challenges/MPI_basics/collectives
+
+```
+
+To compile it:
+
+```
+make
+
+```
+
+To run it: 
+
+```
+bsub collectives.lsf
+
 ```
 
 
