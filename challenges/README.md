@@ -15,3 +15,4 @@ After you finish, you can continue with the next challenge or jump around to tak
 - [Jobs_in_Time_Window](Jobs_in_Time_Window) <img src="../images/medium_badge.png" width="80">
 - [GPU_Data_Transfers](GPU_Data_Transfers) <img src="../images/medium_badge.png" width="80">
 - [GPU_Matrix_Multiply](GPU_Matrix_Multiply) <img src="../images/hard_badge.png" width="80">
+- [GPU_Profiling](GPU_Profiling) <img src="../images/hard_badge.png" width="80">
