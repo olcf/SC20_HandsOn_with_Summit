@@ -325,11 +325,13 @@ Collective Communication serves several purposes:
 
 Routines often originate or terminate at a single process known as the “root”.
 
-For this introduction we'll look at the broadcast, where the root process sends data to all the other processes. One of the main uses of broadcasting is to send configuration parameters, like initial conditions, to all processes in a parallel program. 
+For this introduction we'll look at the broadcast, where the root process sends data to all the other processes. The main uses of broadcasting is to send configuration parameters, like initial conditions or user input, to all processes in a parallel program. The data that you broadcast is initalized inside the MPI region and just for the root process. 
 
-Te
+
 
 Here is the broadcast function:
+
+
 
 ```
 int MPI_Bcast(void *data, int count, MPI_Datatype datatype, int root, MPI_Comm comm)
@@ -341,6 +343,7 @@ The function arguments are:
 * root - Rank of node that will broadcast buf 
 * comm - Communicator
 
+Here is it's use.
 
 ```bash
 #include “stdio.h”
@@ -369,7 +372,7 @@ int main(int argc, char **argv)
 To find this code: 
 
 ```
-$ cd SC20_HandsOn_with_Summit/challenges/MPI_basics/collectives
+$ cd SC20_HandsOn_with_Summit/challenges/MPI_basics/bcast/mpi_bcast.c
 
 ```
 
@@ -383,9 +386,10 @@ make
 To run it: 
 
 ```
-bsub collectives.lsf
+bsub submit_bcast.lsf
 
 ```
+The outputfile will be called bcast.o<job__number>. When you open this file you should see that every rank has been sent the integer 10. 
 
 
 
