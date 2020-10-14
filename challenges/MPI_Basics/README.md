@@ -43,7 +43,7 @@ We'll start by looking at the functions needed for an MPI Hello-world program.
 Below is an outline for the program that discuses its functions. For this challenge, you will review this outline and then try to use it to find the missing MPI function in your copy of mpi_hello.c 
 
 
-**Hello_world Outline**
+**Helloworld Outline**
 
 * First initialize  MPI. 
   
@@ -52,7 +52,7 @@ Below is an outline for the program that discuses its functions. For this challe
   ```
   MPI_Init(&argc, &argv);
   ```
-  When the MPI_Init function is called, all of MPI’s global and internal variables are constructed.  A communicator is setup to contain all of the processes that were spawned, and unique ranks are assigned to each process. The arguments argc and argv are empty in this case. Do not focus on them for now. 
+When the MPI_Init function is called, all of MPI’s global and internal variables are constructed.  A communicator is setup to contain all of the processes that were spawned, and unique ranks are assigned to each process. The arguments argc and argv are empty in this case. Do not focus on them for now. 
 
 * Next get the number (size) of processes from the communicator. 
   
@@ -147,7 +147,7 @@ To run the code
 ```
 bsub submit_hello.lsf 
 ```
-
+This submission script will ask for 1 node with 4 MPI ranks and one rank on each core. Thus, the size (number of ranks) that gets passed to MPI is 4. 
 If it succeeded, you should see the following output in the mpi_hello. output file: 
 
 ```
@@ -157,6 +157,21 @@ Hello from rank 0 of 4 total
 
 ```
 If you had an error go back and check your code. Then recompile it and try again. 
+If you wanted to run with 10 ranks, you would change the jsrun line in the submission script:
+
+from
+
+```
+jsrun -n 4 -c 1 ./run
+
+```
+to
+```
+jsrun -n 10 -c 1 ./run
+
+```
+
+We mention this because a nice feature of MPI programs that are structured like this, is that the user can change size of the problem being run from the submit file without making changes in the code that would require it to be recompiled.
 
 
 
@@ -165,7 +180,6 @@ If you had an error go back and check your code. Then recompile it and try again
 We’ll dive a little deeper into understanding MPI functions as we explore Point to Point communication. 
 
 Point to Point communication is one way you can finely control how you divide work between processors. Point to Point routines involve two and only two processes. One process explicitly initiates a send operation and one process explicitly initiates a receive operation.
-
 
 
 In the code that you will work with for this part of the challenge, Process 0 will send a message "Hello!" to process 1. 
@@ -325,7 +339,7 @@ Collective Communication serves several purposes:
 
 Routines often originate or terminate at a single process known as the “root”.
 
-For this introduction we'll look at the broadcast, where the root process sends data to all the other processes. The main uses of broadcasting is to send configuration parameters, like initial conditions or user input, to all processes in a parallel program. The data that you broadcast is initalized inside the MPI region and just for the root process. 
+For this introduction we'll look at the broadcast, where the root process sends data to all the other processes. The main uses of broadcasting is to send configuration parameters, like initial conditions or user input, to all processes in a parallel program. The data that you broadcast is initialized just for the root process. 
 
 
 
@@ -389,9 +403,4 @@ To run it:
 bsub submit_bcast.lsf
 
 ```
-The outputfile will be called bcast.o<job__number>. When you open this file you should see that every rank has been sent the integer 10. 
-
-
-
-
-
+The output file will be called bcast.o<job__number>. When you open this file, you should see that every rank has been sent the integer 10.
