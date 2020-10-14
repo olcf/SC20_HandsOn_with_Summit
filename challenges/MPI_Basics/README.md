@@ -81,11 +81,17 @@ When the MPI_Init function is called, all of MPI’s global and internal variabl
   ```
   This function cleans up MPI and releases the communicator. No MPI functions will be recognized below this function. 
 
+Now it is your turn. Use the outline to help find and enter the missing MPI function in mpi_hello.c. To do this: 
+
+1. Go to SC20_HandsOn_with_Summit/challenges/MPI_basics/hello/. 
+```
+cd SC20_HandsOn_with_Summit/challenges/MPI_basics/hello/
+
+````
+2. Use your favorite editor to find and enter the missing MPI function in mpi_hello.c
 
 
-Use the outline to help find and enter the missing MPI function in mpi-hello.c. To do this, make sure you are in the SC20_HandsOn_with_Summit/challenges/MPI_basics folder and then open mpi_hello.c with your favorite editor.  
-
-The file will look like this: 
+The mpi_hello.c will look like this: 
 
 ```bash
 #include "stdio.h"
@@ -156,7 +162,8 @@ Hello from rank 1 of 4 total
 Hello from rank 0 of 4 total
 
 ```
-If you had an error go back and check your code. Then recompile it and try again. 
+If you had an error go back and check your code. Then recompile it and try again. You may also look at mpi_hello_solution.c to check your answer.  
+
 If you wanted to run with 10 ranks, you would change the jsrun line in the submission script:
 
 from
@@ -292,7 +299,7 @@ int main(int argc, char ** argv)
 }
 ```
 
-To conquer the challenge: 
+To do this challenge: 
 1. Determine the missing arguments. 
 
 2. Go to SC20_HandsOn_with_Summit/challenges/MPI_basics/ptp/. 
@@ -325,7 +332,7 @@ Process 1 : hello!
 ```
 
 
- If you want to know more about point to point communication, including how to aviod dead-locking your processes, see: [https://www.sciencedirect.com/topics/computer-science/point-to-point-communication](https://www.sciencedirect.com/topics/computer-science/point-to-point-communication) 
+ If you want to know more about point to point communication, including how to avoid dead-locking your processes, see: [https://www.sciencedirect.com/topics/computer-science/point-to-point-communication](https://www.sciencedirect.com/topics/computer-science/point-to-point-communication). We also want to credit the [National Institute for Computational Sciences](https://www.nics.tennessee.edu/mpi-tutorial) for the idea for this example and you can find more send and receive challenges on their page.
 
 
 # MPI Collectives 
@@ -403,4 +410,4 @@ To run it:
 bsub submit_bcast.lsf
 
 ```
-The output file will be called bcast.o<job__number>. When you open this file, you should see that every rank has been sent the integer 10.
+The output file will be called bcast.<job__number>. When you open this file, you should see that every rank has been sent the integer 10.
