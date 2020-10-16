@@ -19,7 +19,7 @@ A good refence for learning more about MPI is [MPI: A Message-Passing Interface 
 **MPI Region** The part of the code that will be executed in parallel using one MPI communicator. It will always be sandwiched between  MPI_Init and MPI_Finalize function calls. 
 <br>
 <center>
-<img src="images/MPI_burger.png" width=200" height="200">
+<img src="images/MPI_burger.png" width=220" height="200">
 </center>
 <br>
 
@@ -29,7 +29,7 @@ The first thing MPI does when it is initialized, is set up the communicator. You
 
 <br>
 <center>
-<img src="images/comm.png" width="700 height="700">
+<img src="images/comm.png" width="500 height="500">
 </center>
 <br>
 
