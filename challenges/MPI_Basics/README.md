@@ -353,7 +353,7 @@ Here is the broadcast function:
 
 <br>
 <center>
-<img src="images/bcast.png" width=220" height="200">
+<img src="images/bcast.png" width=300" height="250">
 </center>
 <br>
 
@@ -433,13 +433,13 @@ Two other collectives you should be familiar with, are the MPI_scatter and MPI_g
 
 <br>
 <center>
-<img src="images/scatter.png" width=220" height="200">
+<img src="images/scatter.png" width=300" height="250">
 </center>
 <br>
 
 <br>
 <center>
-<img src="images/gather.png" width=220" height="200">
+<img src="images/gather.png" width=300" height="250">
 </center>
 <br>
 
