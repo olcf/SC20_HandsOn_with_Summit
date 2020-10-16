@@ -246,7 +246,7 @@ Why does the MPI_Send function say that the message has 6 elements?
 Why datatype is "hello!" ? 
 Where is the message going? 
 
-```
+```bash
 #include <stdio.h>
 #include <string.h>
 #include "mpi.h"
@@ -373,17 +373,29 @@ int main(int argc, char **argv)
 {
     int rank, root, bcast_data;
     root = 0;
+/*------------------------------------------*/
+/* Initialize root process with integer 10 */
+/*----------------------------------------*/
     if(rank == root)
            bcast_data = 10; 
-
+/*------------------------------------------*/
+/* Initialize MPI                          */
+/*----------------------------------------*/
+   
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
+/*----------------------------------------------*/
+/* Broadcast integer from root to all processes */
+/*---------------------------------------------*/
     MPI_Bcast(&bcast_data, 1, MPI_INT, root, MPI_COMM_WORLD);
     
     printf("Rank %d has bcast_data = %d\n", rank, bcast_data);
   
-    MPI_Finalize();
+/*--------------*/
+/* Finalize MPI */
+/*--------------*/
+   MPI_Finalize();
     return 0;
 }
 ```
@@ -411,7 +423,7 @@ bsub submit_bcast.lsf
 ```
 The output file will be called bcast.<job__number>. When you open this file, you should see that every rank has been sent the integer 10.
 
-Two other colletives you should be familirure with,  are the MPI_scatter and MPI_gather functions. MPI_scatter sends a specified part of an inital array from the root process to each other process. MPI_Gather collects local data from each process and sends it to the root process. If you want to challenge yourself with implementing either of these functions see the exercises in this [MPI Tutorial](https://mpitutorial.com/tutorials/mpi-scatter-gather-and-allgather/). 
+Two other colletives you should be familirure with, are the MPI_scatter and MPI_gather functions. MPI_scatter sends a specified part of an inital array from the root process to each other process. MPI_Gather collects local data from each process and sends it to the root process. If you want to challenge yourself with implementing either of these functions see the exercises in this [MPI Tutorial](https://mpitutorial.com/tutorials/mpi-scatter-gather-and-allgather/). 
 
 
 
