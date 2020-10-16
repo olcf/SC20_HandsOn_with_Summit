@@ -351,7 +351,11 @@ We will start with the broadcast function, where the root process sends data to 
 
 Here is the broadcast function:
 
-
+<br>
+<center>
+<img src="images/bcast.png" width=220" height="200">
+</center>
+<br>
 
 ```
 int MPI_Bcast(void *data, int count, MPI_Datatype datatype, int root, MPI_Comm comm)
@@ -425,5 +429,19 @@ bsub submit_bcast.lsf
 ```
 The output file will be called bcast.<job__number>. When you open this file, you should see that every rank has been sent the integer 10.
 
-Two other collectives you should be familiar with, are the MPI_scatter and MPI_gather functions. MPI_scatter sends a specified part of an initial array from the root process to each other process. MPI_Gather collects local data from each process and sends it to the root process. If you want to challenge yourself with implementing either of these functions, see the exercises in this [MPI Tutorial](https://mpitutorial.com/tutorials/mpi-scatter-gather-and-allgather/). 
+Two other collectives you should be familiar with, are the MPI_scatter and MPI_gather functions. MPI_scatter sends a specified part of an initial array from the root process to each other process. MPI_Gather collects local data from each process and sends it to the root process. 
+
+<br>
+<center>
+<img src="images/scatter.png" width=220" height="200">
+</center>
+<br>
+
+<br>
+<center>
+<img src="images/gather.png" width=220" height="200">
+</center>
+<br>
+
+If you want to challenge yourself with implementing either of these functions, see the exercises in this [MPI Tutorial](https://mpitutorial.com/tutorials/mpi-scatter-gather-and-allgather/). 
 
