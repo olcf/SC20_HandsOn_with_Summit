@@ -373,28 +373,30 @@ int main(int argc, char **argv)
 {
     int rank, root, bcast_data;
     root = 0;
-/*------------------------------------------*/
-/* Initialize root process with integer 10 */
-/*----------------------------------------*/
+/*-------------------------------------------------*/
+/* Initialize root process with integer 10         */
+/*-------------------------------------------------*/
     if(rank == root)
            bcast_data = 10; 
-/*------------------------------------------*/
-/* Initialize MPI                          */
-/*----------------------------------------*/
+/*-------------------------------------------------*/
+/* Initialize MPI                                  */
+/*-------------------------------------------------*/
    
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-/*----------------------------------------------*/
-/* Broadcast integer from root to all processes */
-/*---------------------------------------------*/
+/*-----------------------------------------------*/
+/* Broadcast integer from root to all processes  */
+/*-----------------------------------------------*/
+
     MPI_Bcast(&bcast_data, 1, MPI_INT, root, MPI_COMM_WORLD);
     
     printf("Rank %d has bcast_data = %d\n", rank, bcast_data);
   
-/*--------------*/
-/* Finalize MPI */
-/*--------------*/
+/*-----------------------------------------------*/
+/* Finalize MPI                                  */
+/*-----------------------------------------------*/
+
    MPI_Finalize();
     return 0;
 }
