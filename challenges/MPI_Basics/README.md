@@ -1,4 +1,4 @@
-#What is MPI? 
+# What is MPI? 
 
 The **M**essage **P**assing **I**nterface (MIP) is a set of library functions, methods, and specifications that can be called to distribute a code's processing work between nodes or processors on the same node.  It does this by passing messages between the processors. It is governed by a set of community driven standards and there are several implementations of MPI. 
 
