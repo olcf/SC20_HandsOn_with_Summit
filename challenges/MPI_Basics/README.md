@@ -1,4 +1,4 @@
-# What is MPI? 
+What is MPI? 
 
 The **M**essage **P**assing **I**nterface (MIP) is a set of library functions, methods, and specifications that can be called to distribute a code's processing work between nodes or processors on the same node.  It does this by passing messages between the processors. It is governed by a set of community driven standards and there are several implementations of MPI. 
 
@@ -19,7 +19,7 @@ A good refence for learning more about MPI is [MPI: A Message-Passing Interface 
 **MPI Region** The part of the code that will be executed in parallel using one MPI communicator. It will always be sandwiched between  MPI_Init and MPI_Finalize function calls. 
 <br>
 <center>
-<img src="images/MPI_burger.png" width=200" heigth="200">
+<img src="images/MPI_burger.png" width=200" height="200">
 </center>
 <br>
 
@@ -40,7 +40,7 @@ The first thing MPI does when it is initialized, is set up the communicator. You
 MPI consists of hundreds of functions but most users will only use a handful of them. 
 We'll start by looking at the functions needed for an MPI Hello-world program. 
 
-Below is an outline for the program that discuses its functions. For this challenge, you will review this outline and then try to use it to find the missing MPI function in your copy of mpi_hello.c 
+Below is an outline for the program and its MPI functions. For this challenge, review the outline and then try to use it to find the missing MPI function in your copy of mpi_hello.c 
 
 
 **Helloworld Outline**
@@ -83,7 +83,7 @@ When the MPI_Init function is called, all of MPI’s global and internal variabl
 
 Now it is your turn. Use the outline to help find and enter the missing MPI function in mpi_hello.c. To do this: 
 
-1. Go to SC20_HandsOn_with_Summit/challenges/MPI_basics/hello/. 
+1. Go to SC20_HandsOn_with_Summit/challenges/MPI_basics/hello/ .
 ```
 cd SC20_HandsOn_with_Summit/challenges/MPI_basics/hello/
 
@@ -178,7 +178,7 @@ jsrun -n 10 -c 1 ./run
 
 ```
 
-We mention this because a nice feature of MPI programs that are structured like this, is that the user can change size of the problem being run from the submit file without making changes in the code that would require it to be recompiled.
+We mention this because a nice feature of MPI programs that are structured like this, is that the user can change the size of the problem from the submit file without making changes in the code that would require it to be recompiled.
 
 
 
@@ -235,7 +235,7 @@ In this case the function's arguments mean:
 * comm- Communicator
 * status- Struct containing information on received message 
 
-This functions retruns after receive buffer is ready to reuse. 
+This functions returns after receive buffer is ready to reuse. 
 
 
 Here is the code ptp.c, where process 0 will send the message "hello!" to process 1. However, the receive function has three missing arguments labeled A, B. and C. 
@@ -363,7 +363,7 @@ The function arguments are:
 * root - Rank of node that will broadcast buf 
 * comm - Communicator
 
-Here is it's use.
+Here is its use.
 
 ```bash
 #include “stdio.h”
@@ -423,10 +423,5 @@ bsub submit_bcast.lsf
 ```
 The output file will be called bcast.<job__number>. When you open this file, you should see that every rank has been sent the integer 10.
 
-Two other colletives you should be familirure with, are the MPI_scatter and MPI_gather functions. MPI_scatter sends a specified part of an inital array from the root process to each other process. MPI_Gather collects local data from each process and sends it to the root process. If you want to challenge yourself with implementing either of these functions see the exercises in this [MPI Tutorial](https://mpitutorial.com/tutorials/mpi-scatter-gather-and-allgather/). 
-
-
-
-
-
+Two other collectives you should be familiar with, are the MPI_scatter and MPI_gather functions. MPI_scatter sends a specified part of an initial array from the root process to each other process. MPI_Gather collects local data from each process and sends it to the root process. If you want to challenge yourself with implementing either of these functions, see the exercises in this [MPI Tutorial](https://mpitutorial.com/tutorials/mpi-scatter-gather-and-allgather/). 
 
