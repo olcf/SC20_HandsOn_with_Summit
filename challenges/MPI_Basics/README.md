@@ -346,7 +346,7 @@ Collective Communication serves several purposes:
 
 Routines often originate or terminate at a single process known as the “root”.
 
-For this introduction we'll look at the broadcast, where the root process sends data to all the other processes. Thinking back to our hello world example, we were able to have the rank ID and nubmer of ranks setup for all processes by MPI_Init and MPI_Comm_rank. In the following example we build on that by sending data in the form of an ineger to each rank. The main uses of broadcasting is to send configuration parameters, like initial conditions or user input, to all processes in a parallel program. The data that you broadcast is initialized just for the root process. 
+For this introduction we'll look at the broadcast, where the root process sends data to all the other processes. Thinking back to our hello_world example, we were able to have the rank ID and number of ranks setup for all processes by MPI_Init and MPI_Comm_rank. In the following example we build on that by sending data in the form of an integer to each rank. The main uses of broadcasting is to send configuration parameters, like initial conditions or user input, to all processes in a parallel program. The data that you broadcast is initialized just for the root process.
 
 
 
