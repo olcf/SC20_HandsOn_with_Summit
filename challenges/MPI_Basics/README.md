@@ -337,8 +337,7 @@ Process 1 : hello!
 
 # MPI Collectives 
 
-The last type of MPI communication we will introduce is Collective Communication, which involves all the processes in a communicator.
-In fact, all processes in communicator must participate. 
+The last type of MPI communication we will introduce is Collective Communication, in which all the processes in a communicator must participate. 
 Collective Communication serves several purposes:
 * Synchronization
 * Data movement
@@ -346,7 +345,7 @@ Collective Communication serves several purposes:
 
 Routines often originate or terminate at a single process known as the “root”.
 
-For this introduction we'll look at the broadcast, where the root process sends data to all the other processes. Thinking back to our hello_world example, we were able to have the rank ID and number of ranks setup for all processes by MPI_Init and MPI_Comm_rank. In the following example we build on that by sending data in the form of an integer to each rank. The main uses of broadcasting is to send configuration parameters, like initial conditions or user input, to all processes in a parallel program. The data that you broadcast is initialized just for the root process.
+We will start with the broadcast function, where the root process sends data to all the other processes. Thinking back to our hello_world example, we were able to have the rank ID and number of ranks setup for all processes by MPI_Init and MPI_Comm_rank. In the following example we build on that by sending the same data in the form of an integer to each rank. The main uses of broadcasting is to send configuration parameters, like initial conditions or user input, to all processes in a parallel program. The data that you broadcast is initialized just for the root process.
 
 
 
@@ -411,3 +410,11 @@ bsub submit_bcast.lsf
 
 ```
 The output file will be called bcast.<job__number>. When you open this file, you should see that every rank has been sent the integer 10.
+
+Two other colletives you should be familirure with,  are the MPI_scatter and MPI_gather functions. MPI_scatter sends a specified part of an inital array from the root process to each other process. MPI_Gather collects local data from each process and sends it to the root process. If you want to challenge yourself with implementing either of these functions see the exercises in this [MPI Tutorial](https://mpitutorial.com/tutorials/mpi-scatter-gather-and-allgather/). 
+
+
+
+
+
+
