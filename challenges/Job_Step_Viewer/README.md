@@ -63,7 +63,9 @@ The sideways 'H' shaped gap in the middle of the layout are cabinets containing 
 
 ### Node Layout
 
-Nodes in your allocation will be highlighted in either green or red. Green nodes indicate the node is being used by the `jsrun` launch. Nodes highlighted in red are allocated to your job, but not being used by this invocation of `jsrun`. For example, if you _allocate_ two nodes with `bsub` but only _launch_ your job on one core or GPU with `jsrun`, one of the allocated nodes will be sitting idle and will show as red on the top-down view. Typically, seeing nodes highlighted in red indicates you made an error in your `jsrun`. You typically would not want to leave entire nodes vacant for your job run as you are still being charged for this idle node. This is a valuable tool to use while you are setting up jobs on Summit and Ascent to verify you are launching them as you intend.
+Nodes in your allocation will be highlighted in either green or red. Green nodes indicate the node is being used by the `jsrun` launch. Nodes highlighted in red are allocated to your job, but not being used by this invocation of `jsrun`. For example, if you _allocate_ two nodes with `bsub` but only _launch_ your job on one core or GPU with `jsrun`, one of the allocated nodes will be sitting idle and will show as red on the top-down view. 
+
+Typically, seeing nodes highlighted in red indicates you made an error in your `jsrun` or `bsub`. You would not want to leave entire nodes vacant for your job run as you are still being charged for this idle node. This is a valuable tool to use while you are setting up jobs on Summit and Ascent to verify you are launching them as you intend.
 
 Clicking on one of the nodes in your allocation will bring up a diagram that should look familiar if you have gone through a couple of the [`jsrun` Challenge](../jsrun_Job_Launcher) examples. We recommend going through that Challenge to understand the layout of your launched job across the nodes and how to interpret this view, if you haven't already done so.
 
