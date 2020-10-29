@@ -1,4 +1,4 @@
-# GPU Kernel Profiling Using Nsight Compute
+# GPU Kernel Profiling Using Nsight Systems
 
 NVIDIA provides a couple of useful profiling tools on Summit to profile CUDA
 performance. Nsight Systems and Nsight
