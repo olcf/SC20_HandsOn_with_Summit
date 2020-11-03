@@ -9,9 +9,6 @@ Please follow the instructions below to login to OLCF's Ascent High Performance 
 ssh username@login1.ascent.olcf.ornl.gov
 ```
 
-If you did not obtain access to Ascent before the training, please follow [these instructions](https://docs.olcf.ornl.gov/systems/summit_user_guide.html#obtaining-access-to-ascent) to apply. However, we cannot guarantee that your access will be ready in time for you to participate in the hands-on session. 
-
-
 Once you have successfully logged in to Ascent, you can move on to Step 2.
 
 ## Step 2: Clone GitHub Repository for this Event
