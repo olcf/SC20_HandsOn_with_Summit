@@ -2,9 +2,7 @@
 
 The basic workflow for running programs on HPC systems is 1) set up your programming environment - i.e., the software you need, 2) compile the code - i.e., turn the human-readable programming language into machine code, 3) request access to one or more compute nodes, and 4) launch your executable on the compute node(s) you were allocated. In this challenge, you will perform these basic steps to see how it works.
 
-For this challenge you will compile and run a vector addition program written in C. It takes the sum of two vectors A and B to obtain resultant vector C. 
-
-It takes two vectors (A and B), adds them element-wise, and writes the results to vector C:
+For this challenge you will compile and run a vector addition program written in C. It takes two vectors (A and B), adds them element-wise, and writes the results to vector C:
 
 ```c
 // Add vectors (C = A + B)
