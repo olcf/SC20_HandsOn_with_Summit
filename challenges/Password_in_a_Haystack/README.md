@@ -1,6 +1,6 @@
 # Password in a Haystack
 
-Just about every machine in the [Top500 list of supercomputers](https://www.top500.org/list/2019/06/) runs a Linux (or at least Unix-like) operating system. Familiarity with the operating system's built-in utilities, along with common shell commands are a must.
+Just about every machine in the [Top500 list of supercomputers](https://www.top500.org/lists/top500/list/2020/06/) runs a Linux (or at least Unix-like) operating system. Familiarity with the operating system's built-in utilities, along with common shell commands are a must.
 
 Among the most helpful commands to know well is `grep` (which stands for "Global Regular Expression Print"). It's a way to search based on some user-provided pattern. At its simplest, `grep` works like cmd+F/ctrl+F. However, where it really shines is the ability to match patterns of characters through regular expressions, not just characters themselves. (Read more about Regular Expressions [here](https://en.wikipedia.org/wiki/Regular_expression).)
 
