@@ -17,7 +17,7 @@ system's design, discuss how research teams write programs for and run
 workloads on Summit, and you'll get to run your own. The session is guided by
 hands-on [***challenges***](challenges). 
 
-The [first challenge](./challenges/Access_Summit_and_Clone_Repo) is to
+The [first challenge](./challenges/Access_Ascent_and_Clone_Repo) is to
 successfully log into Summit and clone this repository.
 
 Each challenge has its own sub-directory under `/challenges/`, and includes a
