@@ -13,12 +13,12 @@ We won't be submitting any new jobs here, but rather looking at others that have
 (See the `bhist` manual page by running `man bhist` for a full list of command options.)
 
 ## Let's try to answer...
-1.  How many jobs did Summit complete this morning from 00:00 (midnight) to 09:00 (9AM)?
+1. How many jobs were completed on Ascent between 00:00 (midnight) on October 26, 2020 and 23:59 on October 28, 2020?
 
-2. How many unique users did these jobs from 00:00 - 9:00 this morning belong to?
+2. How many unique users did the jobs from question 1 belong to?
 
-### BONUS FOR A PRIZE!
-3. Of the jobs that completed between 00:00 and 9:00 this morning, what's the job ID of the longest running job?
+### BONUS!
+3. Of the jobs found in question 1, what's the job ID of the longest running job?
     1. How long was it pending (pre-execution), and how long did it run (actual execution time)?
     2. When was it submitted?
 

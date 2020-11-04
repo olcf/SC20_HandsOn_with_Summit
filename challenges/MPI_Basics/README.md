@@ -1,6 +1,6 @@
 # What is MPI? 
 
-The **M**essage **P**assing **I**nterface (MIP) is a set of library functions, methods, and specifications that can be called to distribute a code's processing work between nodes or processors on the same node.  It does this by passing messages between the processors. It is governed by a set of community driven standards and there are several implementations of MPI. 
+The **M**essage **P**assing **I**nterface (MIP) is a set of library functions, methods, and specifications that can be called to distribute a code's processing work between nodes or processors on the same node.  It does this by passing messages between the processors. It is governed by a set of community driven standards. 
 
 MPI can be used in conjunction with threading and accelerators. For example, you might use MPI pass work between compute nodes and then use threads or accelerators to divide work among the different processing elements on the node. 
 
@@ -87,8 +87,13 @@ Now it is your turn. Use the outline to help find and enter the missing MPI func
 ```
 cd SC20_HandsOn_with_Summit/challenges/MPI_basics/hello/
 
-````
-2. Use your favorite editor to find and enter the missing MPI function in mpi_hello.c
+```
+2. Use your favorite editor to find and enter the missing MPI function in mpi_hello.c. For example
+
+```
+vi mpi_hello.c
+```
+
 
 
 The mpi_hello.c will look like this: 
@@ -162,7 +167,7 @@ Hello from rank 1 of 4 total
 Hello from rank 0 of 4 total
 
 ```
-If you had an error go back and check your code. Then recompile it and try again. You may also look at mpi_hello_solution.c to check your answer.  
+If you had an error go back and check your code , then recompile it, and try again. You may also look at mpi_hello_solution.c to check your answer.  
 
 If you wanted to run with 10 ranks, you would change the jsrun line in the submission script:
 
@@ -201,19 +206,19 @@ int MPI_Send(void *buf, int count,
 
 ```
 In this function: 
-* buf -Initial integer address of send buffer. The message you want to send will be packed-up into this buffer. 
+* buf - Initial integer address of send buffer. The message you want to send will be packed-up into this buffer. 
 
-* count- Number of elements to send. For example, if you are going to send a message that is 6 characters long, it will have a count of 6 elements. 
+* count - Number of elements to send. For example, if you are going to send a message that is 6 characters long, it will have a count of 6 elements. 
 
 * datatype - This is the MPI datatype of each element in the send buffer. There are built-in data types for all intrinsic C types
-MPI_INT, MPI_FLOAT, MPI_DOUBLE, MPI_CHAR … . If you wanted to send "hello!" from process 0 to process 1, you would used a datatype of MPI_CHAR. 
+MPI_INT, MPI_FLOAT, MPI_DOUBLE, MPI_CHAR … . If you wanted to send "hello" from process 0 to process 1, you would used a datatype of MPI_CHAR. 
 
 
-* Dest- Rank of destination. This is the ID of where the message will go. 
+* Dest - Rank of destination. This is the ID of where the message will go. 
 
-* Tag -Integer tag used by receiver to identify message. 
+* Tag - Integer tag used by receiver to identify message. 
 
-* Comm- Communicator 
+* Comm - Communicator 
 
 This functions retruns after send buffer is ready to reuse. 
 
@@ -227,23 +232,23 @@ int MPI_Recv(void *buf, int count,
 
 In this case the function's arguments mean: 
 
-* buf- Initial address of receive buffer
-* count Maximum number of elements that can be received
+* buf - Initial address of receive buffer
+* count - Maximum number of elements that can be received
 * datatype - MPI_Datatype of each element in receive buffer
-* source- Rank of source
-* tag Integer tag used to identify message
-* comm- Communicator
-* status- Struct containing information on received message 
+* source - Rank of source
+* tag - Integer tag used to identify message
+* comm - Communicator
+* status - Struct containing information on received message 
 
 This functions returns after receive buffer is ready to reuse. 
 
 
-Here is the code ptp.c, where process 0 will send the message "hello!" to process 1. However, the receive function has three missing arguments labeled A, B. and C. 
+Here is the code ptp.c, where process 0 will send the message "hello" to process 1. The receive function has three missing arguments labeled A, B. and C. 
 Your challenge is to use the arguments in the send function and the function definitions above to fill in the missing arguments. 
 
 Some of the questions to help you:
 Why does the MPI_Send function say that the message has 6 elements?
-Why datatype is "hello!" ? 
+Why datatype is "hello" ? 
 Where is the message going? 
 
 ```bash
@@ -274,7 +279,7 @@ int main(int argc, char ** argv)
   /*---------------------------------------*/
 
   if (rank == 0) {
-    strcpy(message, "hello!");
+    strcpy(message, "hello");
     MPI_Send(&message, 6, MPI_CHAR, 1, ntag, MPI_COMM_WORLD);
   }
 
@@ -328,7 +333,7 @@ submit_ptp.lsf
 If your code ran correctly, you will see:
 
 ```
-Process 1 : hello!
+Process 1 : hello
 ```
 
 
@@ -345,7 +350,7 @@ Collective Communication serves several purposes:
 
 Routines often originate or terminate at a single process known as the “root”.
 
-We will start with the broadcast function, where the root process sends data to all the other processes. Thinking back to our hello_world example, we were able to have the rank ID and number of ranks setup for all processes by MPI_Init and MPI_Comm_rank. In the following example we build on that by sending the same data in the form of an integer to each rank. The main uses of broadcasting is to send configuration parameters, like initial conditions or user input, to all processes in a parallel program. The data that you broadcast is initialized just for the root process.
+We will start with the broadcast function, where the root process sends data to all the other processes. Thinking back to our hello_world example, we were able to have the rank ID and number of ranks setup for all processes by MPI_Init and MPI_Comm_rank. In the following example we build on that by sending the same data, in the form of an integer, to each rank. The main uses of broadcasting is to send configuration parameters, like initial conditions or user input, to all processes in a parallel program. The data that you broadcast is initialized just for the root process.
 
 
 
