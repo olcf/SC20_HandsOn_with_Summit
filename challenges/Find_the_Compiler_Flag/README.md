@@ -58,7 +58,7 @@ $ bsub submit.lsf
 > NOTE: The submit.lsf script requests access to 1 compute node for 10 minutes and launches the executable on that compute node using the job launcher, `jsrun`.
 
 
-Once the job is complete, you can confirm that it gave the correct results by looking for `__SUCCESS__` in the output file, `add_vec.JOBID`, where JOBID will be the unique number associated with your job. 
+Once the job is complete, you can confirm that it gave the correct results by looking for `__SUCCESS__` in the output file, `add_vec_acc.JOBID`, where JOBID will be the unique number associated with your job. 
 
 But did you run on the CPU or GPU? An easy way to tell is using NVIDIA's profiler, `nvprof`. This was included in the `jsrun` command so if you ran on the GPU, you should also see output from the profiler as shown below:
 
