@@ -1,11 +1,11 @@
-CUCOMP = mpicc
+CCOMP = mpicc
 CFLAGS =
 
 run: ptp.o
-	$(CUCOMP) $(CFLAGS) ptp.o -o run
+	$(CCOMP) $(CFLAGS) ptp.o -o run
 
 ptp.o: ptp.c
-	$(CUCOMP) $(CFLAGS) -c ptp.c
+	$(CCOMP) $(CFLAGS) -c ptp.c
 
 .PHONY: clean cleanall
 

@@ -1,8 +1,8 @@
 # What is MPI? 
 
-The **M**essage **P**assing **I**nterface (MIP) is a set of library functions, methods, and specifications that can be called to distribute a code's processing work between nodes or processors on the same node.  It does this by passing messages between the processors. It is governed by a set of community driven standards. 
+The **M**essage **P**assing **I**nterface (MPI) is a set of library functions, methods, and specifications that can be called to distribute a code's processing work between nodes or processors on the same node.  It does this by passing messages between the processors. It is governed by a set of community driven standards. 
 
-MPI can be used in conjunction with threading and accelerators. For example, you might use MPI pass work between compute nodes and then use threads or accelerators to divide work among the different processing elements on the node. 
+MPI can be used in conjunction with threading and accelerators. For example, you might use MPI to pass work between compute nodes and then use threads or accelerators to divide work among the different processing elements on the node. 
 
 This challenge will explore an MPI hello-world and two kinds of MPI communication patterns. We will use C code and pass its work with MPI between CPU cores on the same node. 
 
@@ -19,7 +19,7 @@ A good refence for learning more about MPI is [MPI: A Message-Passing Interface 
 **MPI Region** The part of the code that will be executed in parallel using one MPI communicator. It will always be sandwiched between  MPI_Init and MPI_Finalize function calls. 
 <br>
 <center>
-<img src="images/MPI_burger.png" width=220" height="200">
+<img src="images/MPI_burger.png" width="220" height="200">
 </center>
 <br>
 
@@ -29,7 +29,7 @@ The first thing MPI does when it is initialized, is set up the communicator. You
 
 <br>
 <center>
-<img src="images/comm.png" width="500 height="500">
+<img src="images/comm.png" width="500" height="500">
 </center>
 <br>
 
@@ -52,7 +52,7 @@ Below is an outline for the program and its MPI functions. For this challenge, r
   ```
   MPI_Init(&argc, &argv);
   ```
-When the MPI_Init function is called, all of MPI’s global and internal variables are constructed.  A communicator is setup to contain all of the processes that were spawned, and unique ranks are assigned to each process. The arguments argc and argv are empty in this case. Do not focus on them for now. 
+When the MPI_Init function is called, all of MPI's global and internal variables are constructed.  A communicator is setup to contain all of the processes that were spawned, and unique ranks are assigned to each process. The arguments argc and argv are empty in this case. Do not focus on them for now. 
 
 * Next get the number (size) of processes from the communicator. 
   
@@ -61,7 +61,7 @@ When the MPI_Init function is called, all of MPI’s global and internal variabl
   ```
   MPI_Comm_size(MPI_COMM_WORLD, &size); 
   ```
-  In this case, the communicator is named MPI_COMM_WORLD. This function returns the size of the communicator which us equal to the number of ranks. 
+  In this case, the communicator is named MPI_COMM_WORLD. This function returns the size of the communicator which is equal to the number of ranks. 
  
 * Next get the rank ID of each process from the communicator. 
   
@@ -83,15 +83,15 @@ When the MPI_Init function is called, all of MPI’s global and internal variabl
 
 Now it is your turn. Use the outline to help find and enter the missing MPI function in mpi_hello.c. To do this: 
 
-1. Go to SC20_HandsOn_with_Summit/challenges/MPI_basics/hello/ .
+1. Go to SC20_HandsOn_with_Summit/challenges/MPI_Basics/hello/ .
 ```
-cd SC20_HandsOn_with_Summit/challenges/MPI_basics/hello/
+$ cd SC20_HandsOn_with_Summit/challenges/MPI_Basics/hello/
 
 ```
 2. Use your favorite editor to find and enter the missing MPI function in mpi_hello.c. For example
 
 ```
-vi mpi_hello.c
+$ vi mpi_hello.c
 ```
 
 
@@ -114,17 +114,14 @@ int main(int argc, char **argv)
 
     /*------------------------------------------------------*/
     /* Get the number of ranks (size) from the Communicator */
-
     /*------------------------------------------------------*/
 
      MPI_Comm_size(MPI_COMM_WORLD, &size);
-
 
     /*------------------------------------------------------*/
     /* Get the Rank ID for each process                     */
     /* Fix the code here.                                   */
     /*------------------------------------------------------*/
-
 
 
 
@@ -150,14 +147,15 @@ Once you think you have updated the file to include the missing function, compil
 To compile mpi_hello.c 
 
 ```
-make
+$ make
 ````
 
 To run the code 
 
 ```
-bsub submit_hello.lsf 
+$ bsub submit_hello.lsf 
 ```
+
 This submission script will ask for 1 node with 4 MPI ranks and one rank on each core. Thus, the size (number of ranks) that gets passed to MPI is 4. 
 If it succeeded, you should see the following output in the mpi_hello. output file: 
 
@@ -165,8 +163,8 @@ If it succeeded, you should see the following output in the mpi_hello. output fi
 Hello from rank 3 of 4 total
 Hello from rank 1 of 4 total
 Hello from rank 0 of 4 total
-
 ```
+
 If you had an error go back and check your code , then recompile it, and try again. You may also look at mpi_hello_solution.c to check your answer.  
 
 If you wanted to run with 10 ranks, you would change the jsrun line in the submission script:
@@ -175,44 +173,39 @@ from
 
 ```
 jsrun -n 4 -c 1 ./run
-
 ```
 to
+
 ```
 jsrun -n 10 -c 1 ./run
-
 ```
 
 We mention this because a nice feature of MPI programs that are structured like this, is that the user can change the size of the problem from the submit file without making changes in the code that would require it to be recompiled.
 
 
-
 # Point to Point MPI Communication 
 
-We’ll dive a little deeper into understanding MPI functions as we explore Point to Point communication. 
+We'll dive a little deeper into understanding MPI functions as we explore Point to Point communication. 
 
 Point to Point communication is one way you can finely control how you divide work between processors. Point to Point routines involve two and only two processes. One process explicitly initiates a send operation and one process explicitly initiates a receive operation.
 
 
-In the code that you will work with for this part of the challenge, Process 0 will send a message "Hello!" to process 1. 
-The two new MPI functions we will use to accomplish this will be MPI_Send and MPI_Recv. We will also need the MPI_Comm_rank function that you just learned about to get the ranks of the processes from the communicator. 
+In the code that you will work with for this part of the challenge, Process 0 will send a message "Hello!" to process 1. The two new MPI functions we will use to accomplish this will be MPI_Send and MPI_Recv. We will also need the MPI_Comm_rank function that you just learned about to get the ranks of the processes from the communicator. 
 
-Below is the MPI_Send function. It is used to send a message to a process. 
+Below is the MPI_Send function. It is used to send a message from one process to another process. 
 
 ```
 int MPI_Send(void *buf, int count,
-             MPI_Datatype MPI_Datatype datatype, int dest,
+             MPI_Datatype datatype, int dest,
              int tag, MPI_Comm comm)
 
 ```
 In this function: 
-* buf - Initial integer address of send buffer. The message you want to send will be packed-up into this buffer. 
+* buf - Initial address of send buffer. The message you want to send will be packed-up into this buffer. 
 
-* count - Number of elements to send. For example, if you are going to send a message that is 6 characters long, it will have a count of 6 elements. 
+* count - Number of elements to send. For example, if you are going to send a message that has 6 data elements of type datatype, the value for count would be 6. 
 
-* datatype - This is the MPI datatype of each element in the send buffer. There are built-in data types for all intrinsic C types
-MPI_INT, MPI_FLOAT, MPI_DOUBLE, MPI_CHAR … . If you wanted to send "hello" from process 0 to process 1, you would used a datatype of MPI_CHAR. 
-
+* datatype - This is the MPI datatype of each element in the send buffer. There are built-in data types for all intrinsic C types: MPI_INT, MPI_FLOAT, MPI_DOUBLE, MPI_CHAR, etc. If you wanted to send "hello" from process 0 to process 1, you would use a datatype of MPI_CHAR. 
 
 * Dest - Rank of destination. This is the ID of where the message will go. 
 
@@ -227,7 +220,7 @@ Here is the MPI Receive function.
 ```
 int MPI_Recv(void *buf, int count,
              MPI_Datatype datatype, int source,
-             int tag, MPI_Comm comm, MPI_Status status
+             int tag, MPI_Comm comm, MPI_Status status)
 ```
 
 In this case the function's arguments mean: 
@@ -241,7 +234,6 @@ In this case the function's arguments mean:
 * status - Struct containing information on received message 
 
 This functions returns after receive buffer is ready to reuse. 
-
 
 Here is the code ptp.c, where process 0 will send the message "hello" to process 1. The receive function has three missing arguments labeled A, B. and C. 
 Your challenge is to use the arguments in the send function and the function definitions above to fill in the missing arguments. 
@@ -307,27 +299,25 @@ int main(int argc, char ** argv)
 To do this challenge: 
 1. Determine the missing arguments. 
 
-2. Go to SC20_HandsOn_with_Summit/challenges/MPI_basics/ptp/. 
+2. Go to SC20_HandsOn_with_Summit/challenges/MPI_Basics/ptp/. 
 ```
-cd SC20_HandsOn_with_Summit/challenges/MPI_basics/ptp/
+$ cd SC20_HandsOn_with_Summit/challenges/MPI_Basics/ptp/
 
-````
+```
 3. Edit the Receive function in ptp.c with your A, B and C arguments. 
 
+4. Complle ptp.c 
 
-
-4.Complle ptp.c 
 
 ```
-Make
+$ make
 
 ```
 
 5. Submit the job. 
 
 ```
-submit_ptp.lsf
-
+$ submit_ptp.lsf
 ```
 
 If your code ran correctly, you will see:
@@ -336,8 +326,7 @@ If your code ran correctly, you will see:
 Process 1 : hello
 ```
 
-
- If you want to know more about point to point communication, including how to avoid dead-locking your processes, see: [https://www.sciencedirect.com/topics/computer-science/point-to-point-communication](https://www.sciencedirect.com/topics/computer-science/point-to-point-communication). We also want to credit the [National Institute for Computational Sciences](https://www.nics.tennessee.edu/mpi-tutorial) for the idea for this example and you can find more send and receive challenges on their page.
+ If you want to know more about point to point communication, see: [https://computing.llnl.gov/tutorials/mpi/](https://computing.llnl.gov/tutorials/mpi/). We also want to credit the [National Institute for Computational Sciences](https://www.nics.tennessee.edu/mpi-tutorial) for the idea for this example and you can find more send and receive challenges on their page.
 
 
 # MPI Collectives 
@@ -348,11 +337,9 @@ Collective Communication serves several purposes:
 * Data movement
 * Reductions
 
-Routines often originate or terminate at a single process known as the “root”.
+Routines often originate or terminate at a single process known as the "root".
 
-We will start with the broadcast function, where the root process sends data to all the other processes. Thinking back to our hello_world example, we were able to have the rank ID and number of ranks setup for all processes by MPI_Init and MPI_Comm_rank. In the following example we build on that by sending the same data, in the form of an integer, to each rank. The main uses of broadcasting is to send configuration parameters, like initial conditions or user input, to all processes in a parallel program. The data that you broadcast is initialized just for the root process.
-
-
+We will start with the broadcast function, where the root process sends data to all the other processes. Thinking back to our hello_world example, we were able to have the rank ID and number of ranks setup for all processes by MPI_Init and MPI_Comm_rank. In the following example we build on that by sending the same data, in the form of an integer, to each rank. The data that you broadcast is initialized just for the root process.
 
 Here is the broadcast function:
 
@@ -365,8 +352,9 @@ Here is the broadcast function:
 ```
 int MPI_Bcast(void *data, int count, MPI_Datatype datatype, int root, MPI_Comm comm)
 ```
+
 The function arguments are: 
-* data - Initial address and name of send buffer
+* data - Initial address of send buffer
 * count - Number of elements to send
 * datatype - Datatype of each element in send buffer
 * root - Rank of node that will broadcast buf 
@@ -416,22 +404,20 @@ To find this code:
 
 ```
 $ cd SC20_HandsOn_with_Summit/challenges/MPI_basics/bcast/mpi_bcast.c
-
 ```
 
 To compile it:
 
 ```
-make
-
+$ make
 ```
 
 To run it: 
 
 ```
-bsub submit_bcast.lsf
-
+$ bsub submit_bcast.lsf
 ```
+
 The output file will be called bcast.<job__number>. When you open this file, you should see that every rank has been sent the integer 10.
 
 Two other collectives you should be familiar with, are the MPI_scatter and MPI_gather functions. MPI_scatter sends a specified part of an initial array from the root process to each other process. MPI_Gather collects local data from each process and sends it to the root process. 

@@ -1,11 +1,11 @@
-CUCOMP = mpicc
+CCOMP = mpicc
 CFLAGS =
 
 run: mpi_bcast.o
-	$(CUCOMP) $(CFLAGS) mpi_bcast.o -o run
+	$(CCOMP) $(CFLAGS) mpi_bcast.o -o run
 
-mpi_hello.o: mpi_bcast.c
-	$(CUCOMP) $(CFLAGS) -c mpi_bcast.c
+mpi_bcast.o: mpi_bcast.c
+	$(CCOMP) $(CFLAGS) -c mpi_bcast.c
 
 .PHONY: clean cleanall
 
